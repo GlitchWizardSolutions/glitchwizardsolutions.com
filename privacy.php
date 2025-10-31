@@ -43,23 +43,23 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center ">
-    <div class="container-fluid d-flex align-items-center justify-content-lg-between">
+   <!-- ======= Header ======= -->
+  <header id='header' class='d-flex align-items-center '>
+    <div class='container-fluid d-flex align-items-center justify-content-lg-between'>
 
-      <h1 class="logo me-auto me-lg-0"><a href="https://glitchwizardsolutions.com/index.html">GlitchWizard Solutions</a></h1>
+      <h1 class='logo'>GlitchWizard Solutions</h1>
        
-    
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id='navbar' class='navbar order-last order-lg-0'>
          
 
         <ul>
-          <li><a class="nav-link scrollto active" href="https://glitchwizardsolutions.com/#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="https://glitchwizardsolutions.com/#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/">Contact</a></li>
+          <li><a class='nav-link scrollto active' href='https://glitchwizardsolutions.com/#hero'>Home</a></li>
+          <li><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/#services'>Services</a></li>
+          <li><a class='nav-link scrollto' href='https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/'>Booking</a></li>
+          <li><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/message-me.php'>Contact</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class='bi bi-list mobile-nav-toggle'></i>
       </nav><!-- .navbar -->
 
     </div>
