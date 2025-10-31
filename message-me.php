@@ -316,7 +316,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="https://glitchwizardsolutions.com/#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="https://glitchwizardsolutions.com/#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/">Contact</a></li>
+          <li><a class="nav-link scrollto" href="/message-me.php">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
