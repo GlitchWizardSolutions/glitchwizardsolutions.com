@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "GlitchWizardSolutions.com",
+  "Id": "fa8c3ddd-8c29-4241-b3e3-d2dee7f6beb6"
+}

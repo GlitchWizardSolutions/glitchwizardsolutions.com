@@ -1,0 +1,29 @@
+.screenreader-text {
+  position: absolute;
+  left: -999px;
+  width: 1px;
+  height: 1px;
+  top: auto;
+}
+.screenreader-text:focus {
+  color: black;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  position: static;
+  margin: auto;
+}
+
+a .email-button {
+    display:inline-block;
+    padding:10px 20px;
+    background-color:#007bff;
+    color:#fff;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+    transition: background-color 0.3 ease;
+}
+a .email-button:hover {
+    background-color: #0056b3;
+}

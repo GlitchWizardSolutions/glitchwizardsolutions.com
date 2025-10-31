@@ -1,0 +1,58 @@
+  <meta charset='UTF-8'>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' >
+  <meta name='subject' content='Small Business Website Development Services Offer'>
+  <meta name='description' content='From your initial footprint through your digital marketing, we build search engine authority organically.  This is so each time you are ready to scale up - your digital presence is already optimized for your next growth stage.'>
+  <meta name='keywords'    content='digital marketing, new website, small business website, personal website' >
+  <meta name='author'      content='Barbara Moore' >
+  <meta name='copyright' content='GlitchWizard Solutions, Tallahassee, Florida'>
+  <meta name='language' content='ES'>
+  <meta name='robots' content='index,follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large'>
+  <meta name='revised' content='Saturday, January 20th, 2024, 1:45 pm'>
+  <meta name='Classification' content='Business'>
+  <meta name='designer' content='Barbara Moore, GlitchWizard Solutions'>
+  <meta name='reply-to' content='webdev@glitchwizardsolutions.com'>
+  <meta http-equiv='Expires' content='0'>
+  <meta http-equiv='Pragma' content='no-cache'>
+  <meta http-equiv='Cache-Control' content='no-cache'>
+  <meta http-equiv='imagetoolbar' content='no'>
+  <meta http-equiv='x-dns-prefetch-control' content='off'>
+  <meta name='target' content='all'>
+  <meta name='HandheldFriendly' content='True'>
+  <meta name='MobileOptimized' content='320'>
+  <meta name='owner' content='GlitchWizard Solutions LLC'>
+  <meta name='url' content='https://glitchwizardsolutions.com'>
+  <meta name='identifier-URL' content='https://glitchwizardsolutions.com'>
+  <meta name='directory' content='submission'>
+  <meta name='pagename' content='Websites that Grow with Your Business Goals'>
+  <meta name='category' content='Web Design Services'>
+  <meta name='rating' content='General'>
+  <meta name='target' content='all'>
+  <meta name='HandheldFriendly' content='True'>
+  <meta name='MobileOptimized' content='320'>
+  <meta name='date' content='January 20, 2024'>
+  <meta http-equiv='Expires' content='0'>
+  <meta http-equiv='Pragma' content='no-cache'>
+  <meta http-equiv='Cache-Control' content='no-cache'>
+  <meta http-equiv='imagetoolbar' content='no'>
+  <meta http-equiv='x-dns-prefetch-control' content='off'>
+<!--Facebook Meta Tags-->
+  <meta property='og:title' content='Websites that Grow with Your Business Goals' />
+  <meta property='og:type' content='website'>
+  <meta property='og:locale' content='es_ES'>
+  <meta property='og.image' content='https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png' />
+  <meta property='og:url' content='https://glitchwizardsolutions.com/index.html'>
+  <meta property='og:description' content='From your initial footprint through your digital marketing!' />
+  <meta property='og:site_name' content='GlitchWizard Solutions, Inc.' />
+  <!--Facebook--><!--<meta property='fb:app_id' content='' />-->
+  
+   <!-- Twitter Meta Tags -->
+  <meta name='twitter:card' content='summary_large_image'>
+  <meta property='twitter:domain' content='glitchwizardsolutions.com'>
+  <meta property='twitter:url' content='https://glitchwizardsolutions.com/index.html'>
+  <meta name='twitter:title' content='Websites that Grow with Your Business Goals'>
+  <meta name='twitter:description' content='From your initial footprint through your digital marketing!'>
+  <meta name='twitter:image' content='https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png'>
+  <meta name='twitter:image:alt' content='Web Presence Growth Plans written on a binary code background'>
+  <!-- <meta name='twitter:site' content='@' /> 
+       <meta name='twitter:creator' content='@' />-->

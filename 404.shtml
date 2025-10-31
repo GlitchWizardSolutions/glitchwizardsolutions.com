@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <title>This page is not found.</title>
+    <link href="https://glitchwizardsolutions.com/assets/errorpages/404/css.css" rel="stylesheet">
+    <script src="https://glitchwizardsolutions.com/assets/errorpages/404/prefixfree.js"></script>
+</head>
+<body>
+
+  <textarea class="spacebar" required autofocus spellcheck="false"></textarea>
+
+  <section class="bluescreen">
+    <ul class="loading">
+      <li>
+      <li>
+      <li>
+      <li>
+      <li>
+    </ul>
+  </section>
+
+  <section class="introscreen">
+     <div class="logo">
+        <ul class="starfield one">
+      <li>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li><br>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li><br>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li><br>
+    </ul>
+     </div> 
+    <ul class="presents">
+      <li>
+      <li>
+    </ul>
+    <ul class="starfield two">
+      <li>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li><br>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li><br>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li>
+      <li><br>
+    </ul>
+    <p class="scrolltext"></p>
+  </section>
+ 
+
+</body>
+</html>
