@@ -148,7 +148,7 @@
                         <strong>Authentication:</strong> Successful with user <code>' . htmlspecialchars($smtp_username) . '</code><br>
                         <small class="text-muted">✉️ Check your inbox (and spam folder) for the test message.</small>' . $gmail_note . '
                     </div>';
-                    </div>';
+                  
                 } else {
                     // Parse the error message for more detailed information
                     $error_details = htmlspecialchars($result);
@@ -250,9 +250,12 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="smtp_host">SMTP Host</label>
-                  <input type="text" name="smtp_host" class="form-control" id="smtp_host" 
-                         placeholder="smtp.office365.com" 
-                         value="<?php echo htmlspecialchars($_POST['smtp_host'] ?? 'smtp.office365.com'); ?>" required>
+                  <select name="smtp_host" class="form-control" id="smtp_host" required>
+                    <option value="smtp.azurecomm.net" <?php echo ($_POST['smtp_host'] ?? '') == 'smtp.azurecomm.net' ? 'selected' : ''; ?>>smtp.azurecomm.net (Azure)</option>
+                    <option value="smtp.office365.com" <?php echo ($_POST['smtp_host'] ?? 'smtp.office365.com') == 'smtp.office365.com' ? 'selected' : ''; ?>>smtp.office365.com (Microsoft 365)</option>
+                    <option value="smtp.gmail.com" <?php echo ($_POST['smtp_host'] ?? '') == 'smtp.gmail.com' ? 'selected' : ''; ?>>smtp.gmail.com (Gmail)</option>
+                    <option value="mail.glitchwizardsolutions.com" <?php echo ($_POST['smtp_host'] ?? '') == 'mail.glitchwizardsolutions.com' ? 'selected' : ''; ?>>mail.glitchwizardsolutions.com (Custom)</option>
+                  </select>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label for="smtp_port">SMTP Port</label>
@@ -274,17 +277,21 @@
                 </div>
                 <div class="col-md-6 form-group mt-3">
                   <label for="test_email">Test Email Address (To)</label>
-                  <input type="email" class="form-control" name="test_email" id="test_email" 
-                         placeholder="recipient@email.com" 
-                         value="<?php echo htmlspecialchars($_POST['test_email'] ?? ''); ?>" required>
+                  <select name="test_email" class="form-control" id="test_email" required>
+                    <option value="sidewaysy@gmail.com" <?php echo ($_POST['test_email'] ?? 'sidewaysy@gmail.com') == 'sidewaysy@gmail.com' ? 'selected' : ''; ?>>sidewaysy@gmail.com</option>
+                    <option value="webdev@glitchwizardsolutions.com" <?php echo ($_POST['test_email'] ?? '') == 'webdev@glitchwizardsolutions.com' ? 'selected' : ''; ?>>webdev@glitchwizardsolutions.com</option>
+                    <option value="admin@glitchwizard.website" <?php echo ($_POST['test_email'] ?? '') == 'admin@glitchwizard.website' ? 'selected' : ''; ?>>admin@glitchwizard.website</option>
+                  </select>
                 </div>
               </div>
               
               <div class="form-group mt-3">
                 <label for="from_email">From Email Address</label>
-                <input type="email" class="form-control" name="from_email" id="from_email" 
-                       placeholder="sender@yourdomain.com" 
-                       value="<?php echo htmlspecialchars($_POST['from_email'] ?? ''); ?>" required>
+                <select name="from_email" class="form-control" id="from_email" required>
+                  <option value="webdev@glitchwizardsolutions.com" <?php echo ($_POST['from_email'] ?? 'webdev@glitchwizardsolutions.com') == 'webdev@glitchwizardsolutions.com' ? 'selected' : ''; ?>>webdev@glitchwizardsolutions.com</option>
+                  <option value="DoNotReply@glitchwizardsolutions.com" <?php echo ($_POST['from_email'] ?? '') == 'DoNotReply@glitchwizardsolutions.com' ? 'selected' : ''; ?>>DoNotReply@glitchwizardsolutions.com</option>
+                  <option value="admin@glitchwizard.website" <?php echo ($_POST['from_email'] ?? '') == 'admin@glitchwizard.website' ? 'selected' : ''; ?>>admin@glitchwizard.website</option>
+                </select>
                 <small class="form-text text-muted">This should typically match your SMTP username or be from the same domain</small>
               </div>
               
@@ -316,7 +323,7 @@
             <div class="info-wrap">
               <h4 class="mb-4">Common SMTP Configurations</h4>
               <div class="row">
-                <div class="col-lg-4 info">
+                <div class="col-lg-3 info">
                   <i class="bi bi-microsoft"></i>
                   <h5>Microsoft 365</h5>
                   <p><strong>Host:</strong> smtp.office365.com<br>
@@ -325,7 +332,16 @@
                      <strong>Auth:</strong> App Password required</p>
                 </div>
 
-                <div class="col-lg-4 info mt-4 mt-lg-0">
+                <div class="col-lg-3 info mt-4 mt-lg-0">
+                  <i class="bi bi-cloud"></i>
+                  <h5>Azure Comm Services</h5>
+                  <p><strong>Host:</strong> smtp.azurecomm.net<br>
+                     <strong>Port:</strong> 587<br>
+                     <strong>Encryption:</strong> TLS<br>
+                     <strong>Auth:</strong> ACS Endpoint & Key</p>
+                </div>
+
+                <div class="col-lg-3 info mt-4 mt-lg-0">
                   <i class="bi bi-google"></i>
                   <h5>Gmail</h5>
                   <p><strong>Host:</strong> smtp.gmail.com<br>
@@ -334,7 +350,7 @@
                      <strong>Auth:</strong> App Password required</p>
                 </div>
 
-                <div class="col-lg-4 info mt-4 mt-lg-0">
+                <div class="col-lg-3 info mt-4 mt-lg-0">
                   <i class="bi bi-envelope-at"></i>
                   <h5>Custom/cPanel</h5>
                   <p><strong>Host:</strong> mail.yourdomain.com<br>
@@ -355,6 +371,7 @@
                 <h5 class="card-title"><i class="bi bi-lightbulb"></i> Troubleshooting Tips</h5>
                 <ul class="list-unstyled">
                   <li><i class="bi bi-check-circle text-success"></i> <strong>Microsoft 365:</strong> Enable MFA and create App Password in Security settings</li>
+                  <li><i class="bi bi-check-circle text-success"></i> <strong>Azure Communication Services:</strong> Use ACS Endpoint as username and Access Key as password from Azure Portal</li>
                   <li><i class="bi bi-check-circle text-success"></i> <strong>Gmail:</strong> Enable 2FA and generate App Password (not regular password)</li>
                   <li><i class="bi bi-check-circle text-success"></i> <strong>Port 587:</strong> Usually works better than 465 for most providers</li>
                   <li><i class="bi bi-check-circle text-success"></i> <strong>App Passwords:</strong> Use without spaces (e.g., abcdexfghijklmnop)</li>

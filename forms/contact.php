@@ -43,8 +43,11 @@
     'port' => smtp_port,
     'encryption' => 'tls'
   );
-
-  // Add comprehensive debugging information
+  
+  // Set Reply-To header to ensure replies go to the customer's email
+  $contact->options = array(
+    'reply_to' => $_POST['email']
+  );
   error_log("=== SMTP DEBUG INFO ===");
   error_log("SMTP Host from config: " . smtp_host);
   error_log("SMTP Port from config: " . smtp_port);
