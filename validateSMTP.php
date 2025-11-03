@@ -75,13 +75,33 @@
   <div id='primary-content'></div>
   <main id="main">
     <?php
+    // Start session for POST-Redirect-GET pattern
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
     // PHP processing for SMTP test
     $test_result = '';
     $show_results = false;
     
-    if ($_POST && isset($_POST['test_smtp'])) {
+    // Check if we have results from a redirect
+    if (isset($_SESSION['smtp_test_results'])) {
         $show_results = true;
-        
+        $test_result = $_SESSION['smtp_test_results']['test_result'];
+        $smtp_host = $_SESSION['smtp_test_results']['smtp_host'];
+        $smtp_port = $_SESSION['smtp_test_results']['smtp_port'];
+        $smtp_username = $_SESSION['smtp_test_results']['smtp_username'];
+        $smtp_encryption = $_SESSION['smtp_test_results']['smtp_encryption'];
+        $test_email = $_SESSION['smtp_test_results']['test_email'];
+        $from_email = $_SESSION['smtp_test_results']['from_email'];
+        if (isset($_SESSION['smtp_test_results']['raw_error_details'])) {
+            $raw_error_details = $_SESSION['smtp_test_results']['raw_error_details'];
+        }
+        // Clear the session data after displaying
+        unset($_SESSION['smtp_test_results']);
+    }
+    
+    if ($_POST && isset($_POST['test_smtp'])) {
         // Get form data
         $smtp_host = $_POST['smtp_host'] ?? '';
         $smtp_port = $_POST['smtp_port'] ?? '';
@@ -128,6 +148,9 @@
                 
                 $result = $contact->send();
                 
+                // Initialize raw error details variable
+                $raw_error_details = null;
+                
                 if ($result === 'OK') {
                     $gmail_note = '';
                     if (strpos($smtp_host, 'gmail') !== false) {
@@ -152,6 +175,7 @@
                 } else {
                     // Parse the error message for more detailed information
                     $error_details = htmlspecialchars($result);
+                    $raw_error_details = $result; // Store raw error for technical display
                     $troubleshooting_tip = '';
                     
                     // Provide specific troubleshooting based on error type
@@ -188,6 +212,11 @@
                 
             } catch (Exception $e) {
                 $exception_message = htmlspecialchars($e->getMessage());
+                $raw_error_details = "Exception Type: " . get_class($e) . "\n" .
+                                    "Message: " . $e->getMessage() . "\n" .
+                                    "File: " . $e->getFile() . "\n" .
+                                    "Line: " . $e->getLine() . "\n" .
+                                    "Stack Trace:\n" . $e->getTraceAsString();
                 $exception_tip = '';
                 
                 // Provide specific tips based on exception type
@@ -216,6 +245,26 @@
         } else {
             $test_result = '<div class="alert alert-warning"><i class="bi bi-exclamation-triangle"></i> <strong>ERROR:</strong> PHP Email Form library not found.</div>';
         }
+        
+        // Store results in session and redirect (POST-Redirect-GET pattern)
+        $_SESSION['smtp_test_results'] = array(
+            'test_result' => $test_result,
+            'smtp_host' => $smtp_host,
+            'smtp_port' => $smtp_port,
+            'smtp_username' => $smtp_username,
+            'smtp_encryption' => $smtp_encryption,
+            'test_email' => $test_email,
+            'from_email' => $from_email
+        );
+        
+        // Include raw error details if they exist
+        if (isset($raw_error_details)) {
+            $_SESSION['smtp_test_results']['raw_error_details'] = $raw_error_details;
+        }
+        
+        // Redirect to prevent form resubmission
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit();
     }
     ?>
 
@@ -227,14 +276,6 @@
           <h2>SMTP Configuration Validator</h2>
           <p>Professional email server configuration testing tool. Test your SMTP settings before deploying to production.</p>
         </div>
-
-        <?php if ($show_results): ?>
-        <div class="row justify-content-center mb-4">
-          <div class="col-lg-10">
-            <?php echo $test_result; ?>
-          </div>
-        </div>
-        <?php endif; ?>
 
         <div class="row justify-content-center">
           <div class="col-lg-8">
@@ -251,18 +292,18 @@
                 <div class="col-md-6 form-group">
                   <label for="smtp_host">SMTP Host</label>
                   <select name="smtp_host" class="form-control" id="smtp_host" required>
-                    <option value="smtp.azurecomm.net" <?php echo ($_POST['smtp_host'] ?? '') == 'smtp.azurecomm.net' ? 'selected' : ''; ?>>smtp.azurecomm.net (Azure)</option>
-                    <option value="smtp.office365.com" <?php echo ($_POST['smtp_host'] ?? 'smtp.office365.com') == 'smtp.office365.com' ? 'selected' : ''; ?>>smtp.office365.com (Microsoft 365)</option>
-                    <option value="smtp.gmail.com" <?php echo ($_POST['smtp_host'] ?? '') == 'smtp.gmail.com' ? 'selected' : ''; ?>>smtp.gmail.com (Gmail)</option>
-                    <option value="mail.glitchwizardsolutions.com" <?php echo ($_POST['smtp_host'] ?? '') == 'mail.glitchwizardsolutions.com' ? 'selected' : ''; ?>>mail.glitchwizardsolutions.com (Custom)</option>
+                    <option value="smtp.azurecomm.net" <?php echo (isset($_POST['smtp_host']) && $_POST['smtp_host'] == 'smtp.azurecomm.net') ? 'selected' : ''; ?>>smtp.azurecomm.net (Azure)</option>
+                    <option value="smtp.office365.com" <?php echo (isset($_POST['smtp_host']) && $_POST['smtp_host'] == 'smtp.office365.com') ? 'selected' : ''; ?>>smtp.office365.com (Microsoft 365)</option>
+                    <option value="smtp.gmail.com" <?php echo (isset($_POST['smtp_host']) && $_POST['smtp_host'] == 'smtp.gmail.com') ? 'selected' : ''; ?>>smtp.gmail.com (Gmail)</option>
+                    <option value="mail.glitchwizardsolutions.com" <?php echo (isset($_POST['smtp_host']) && $_POST['smtp_host'] == 'mail.glitchwizardsolutions.com') ? 'selected' : ''; ?>>mail.glitchwizardsolutions.com (Custom)</option>
                   </select>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label for="smtp_port">SMTP Port</label>
                   <select name="smtp_port" class="form-control" id="smtp_port" required>
-                    <option value="587" <?php echo ($_POST['smtp_port'] ?? '587') == '587' ? 'selected' : ''; ?>>587 (TLS)</option>
-                    <option value="465" <?php echo ($_POST['smtp_port'] ?? '') == '465' ? 'selected' : ''; ?>>465 (SSL)</option>
-                    <option value="25" <?php echo ($_POST['smtp_port'] ?? '') == '25' ? 'selected' : ''; ?>>25 (Plain/STARTTLS)</option>
+                    <option value="587" <?php echo (isset($_POST['smtp_port']) && $_POST['smtp_port'] == '587') ? 'selected' : ''; ?>>587 (TLS)</option>
+                    <option value="465" <?php echo (isset($_POST['smtp_port']) && $_POST['smtp_port'] == '465') ? 'selected' : ''; ?>>465 (SSL)</option>
+                    <option value="25" <?php echo (isset($_POST['smtp_port']) && $_POST['smtp_port'] == '25') ? 'selected' : ''; ?>>25 (Plain/STARTTLS)</option>
                   </select>
                 </div>
               </div>
@@ -271,16 +312,16 @@
                 <div class="col-md-6 form-group mt-3">
                   <label for="smtp_encryption">Encryption</label>
                   <select name="smtp_encryption" class="form-control" id="smtp_encryption" required>
-                    <option value="tls" <?php echo ($_POST['smtp_encryption'] ?? 'tls') == 'tls' ? 'selected' : ''; ?>>TLS</option>
-                    <option value="ssl" <?php echo ($_POST['smtp_encryption'] ?? '') == 'ssl' ? 'selected' : ''; ?>>SSL</option>
+                    <option value="tls" <?php echo (isset($_POST['smtp_encryption']) && $_POST['smtp_encryption'] == 'tls') ? 'selected' : ''; ?>>TLS</option>
+                    <option value="ssl" <?php echo (isset($_POST['smtp_encryption']) && $_POST['smtp_encryption'] == 'ssl') ? 'selected' : ''; ?>>SSL</option>
                   </select>
                 </div>
                 <div class="col-md-6 form-group mt-3">
                   <label for="test_email">Test Email Address (To)</label>
                   <select name="test_email" class="form-control" id="test_email" required>
-                    <option value="sidewaysy@gmail.com" <?php echo ($_POST['test_email'] ?? 'sidewaysy@gmail.com') == 'sidewaysy@gmail.com' ? 'selected' : ''; ?>>sidewaysy@gmail.com</option>
-                    <option value="webdev@glitchwizardsolutions.com" <?php echo ($_POST['test_email'] ?? '') == 'webdev@glitchwizardsolutions.com' ? 'selected' : ''; ?>>webdev@glitchwizardsolutions.com</option>
-                    <option value="admin@glitchwizard.website" <?php echo ($_POST['test_email'] ?? '') == 'admin@glitchwizard.website' ? 'selected' : ''; ?>>admin@glitchwizard.website</option>
+                    <option value="sidewaysy@gmail.com" <?php echo (isset($_POST['test_email']) && $_POST['test_email'] == 'sidewaysy@gmail.com') ? 'selected' : ''; ?>>sidewaysy@gmail.com</option>
+                    <option value="webdev@glitchwizardsolutions.com" <?php echo (isset($_POST['test_email']) && $_POST['test_email'] == 'webdev@glitchwizardsolutions.com') ? 'selected' : ''; ?>>webdev@glitchwizardsolutions.com</option>
+                    <option value="admin@glitchwizard.website" <?php echo (isset($_POST['test_email']) && $_POST['test_email'] == 'admin@glitchwizard.website') ? 'selected' : ''; ?>>admin@glitchwizard.website</option>
                   </select>
                 </div>
               </div>
@@ -288,24 +329,25 @@
               <div class="form-group mt-3">
                 <label for="from_email">From Email Address</label>
                 <select name="from_email" class="form-control" id="from_email" required>
-                  <option value="webdev@glitchwizardsolutions.com" <?php echo ($_POST['from_email'] ?? 'webdev@glitchwizardsolutions.com') == 'webdev@glitchwizardsolutions.com' ? 'selected' : ''; ?>>webdev@glitchwizardsolutions.com</option>
-                  <option value="DoNotReply@glitchwizardsolutions.com" <?php echo ($_POST['from_email'] ?? '') == 'DoNotReply@glitchwizardsolutions.com' ? 'selected' : ''; ?>>DoNotReply@glitchwizardsolutions.com</option>
-                  <option value="admin@glitchwizard.website" <?php echo ($_POST['from_email'] ?? '') == 'admin@glitchwizard.website' ? 'selected' : ''; ?>>admin@glitchwizard.website</option>
+                  <option value="webdev@glitchwizardsolutions.com" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'webdev@glitchwizardsolutions.com') ? 'selected' : ''; ?>>webdev@glitchwizardsolutions.com</option>
+                  <option value="DoNotReply@glitchwizardsolutions.com" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'DoNotReply@glitchwizardsolutions.com') ? 'selected' : ''; ?>>DoNotReply@glitchwizardsolutions.com</option>
+                  <option value="admin@glitchwizard.website" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'admin@glitchwizard.website') ? 'selected' : ''; ?>>admin@glitchwizard.website</option>
                 </select>
                 <small class="form-text text-muted">This should typically match your SMTP username or be from the same domain</small>
               </div>
               
               <div class="form-group mt-3">
                 <label for="smtp_username">SMTP Username</label>
-                <input type="email" class="form-control" name="smtp_username" id="smtp_username" 
-                       placeholder="your@domain.com" 
-                       value="<?php echo htmlspecialchars($_POST['smtp_username'] ?? ''); ?>" required>
+                <input type="text" class="form-control" name="smtp_username" id="smtp_username" 
+                       placeholder="your@domain.com or endpoint ID" 
+                       value="" autocomplete="off" required>
+                <small class="form-text text-muted">Can be an email address, endpoint ID, or username depending on your SMTP provider</small>
               </div>
               
               <div class="form-group mt-3">
                 <label for="smtp_password">SMTP Password</label>
                 <input type="password" class="form-control" name="smtp_password" id="smtp_password" 
-                       placeholder="Your password or app password" required>
+                       placeholder="Your password or app password" value="" autocomplete="off" required>
                 <small class="form-text text-muted">For Microsoft 365, use an App Password. For Gmail, enable 2FA and create an App Password.</small>
               </div>
               
@@ -314,49 +356,256 @@
                   <i class="bi bi-envelope-check"></i> Test SMTP Configuration
                 </button>
               </div>
+              
+              <?php if ($show_results && isset($test_result)): ?>
+              <!-- Detailed Error/Success Message Area -->
+              <div class="mt-4">
+                <div class="card border-0 shadow-sm">
+                  <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-code-square"></i> Test Results - Technical Details</h5>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $test_result; ?>
+                    
+                    <?php if (isset($raw_error_details)): ?>
+                    <div class="mt-3 p-3" style="background: #f8f9fa; border-left: 4px solid #dc3545; border-radius: 4px;">
+                      <h6 class="text-danger mb-2"><i class="bi bi-bug"></i> Raw Error Details (For Technical Support)</h6>
+                      <pre style="white-space: pre-wrap; word-wrap: break-word; font-size: 12px; margin: 0; color: #212529;"><?php echo htmlspecialchars($raw_error_details); ?></pre>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <div class="mt-3 p-3" style="background: #e7f3ff; border-left: 4px solid #0d6efd; border-radius: 4px;">
+                      <h6 class="text-primary mb-2"><i class="bi bi-info-circle"></i> Configuration Summary</h6>
+                      <table class="table table-sm table-borderless mb-0" style="font-size: 13px;">
+                        <tr><td><strong>SMTP Host:</strong></td><td><code><?php echo htmlspecialchars($smtp_host); ?></code></td></tr>
+                        <tr><td><strong>SMTP Port:</strong></td><td><code><?php echo htmlspecialchars($smtp_port); ?></code></td></tr>
+                        <tr><td><strong>Encryption:</strong></td><td><code><?php echo strtoupper($smtp_encryption); ?></code></td></tr>
+                        <tr><td><strong>Username:</strong></td><td><code><?php echo htmlspecialchars($smtp_username); ?></code></td></tr>
+                        <tr><td><strong>From Address:</strong></td><td><code><?php echo htmlspecialchars($from_email); ?></code></td></tr>
+                        <tr><td><strong>To Address:</strong></td><td><code><?php echo htmlspecialchars($test_email); ?></code></td></tr>
+                        <tr><td><strong>Test Time:</strong></td><td><code><?php echo date('Y-m-d H:i:s T'); ?></code></td></tr>
+                        <tr><td><strong>Server:</strong></td><td><code><?php echo $_SERVER['SERVER_SOFTWARE'] ?? 'Unknown'; ?></code></td></tr>
+                        <tr><td><strong>PHP Version:</strong></td><td><code><?php echo phpversion(); ?></code></td></tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php endif; ?>
             </form>          </div>
+        </div>
+
+        <!-- ======= DNS Records Section ======= -->
+        <div class="row mt-5 justify-content-center">
+          <div class="col-lg-10">
+            <div class="card shadow-sm">
+              <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="bi bi-dns"></i> DNS Records for glitchwizardsolutions.com</h4>
+              </div>
+              <div class="card-body p-0">
+                <?php
+                $domain = 'glitchwizardsolutions.com';
+                
+                // Function to get DNS records
+                function getDNSRecords($domain, $type) {
+                    $records = @dns_get_record($domain, $type);
+                    return $records ? $records : array();
+                }
+                
+                // Get all types of DNS records
+                $mx_records = getDNSRecords($domain, DNS_MX);
+                $txt_records = getDNSRecords($domain, DNS_TXT);
+                $a_records = getDNSRecords($domain, DNS_A);
+                $aaaa_records = getDNSRecords($domain, DNS_AAAA);
+                $cname_records = getDNSRecords($domain, DNS_CNAME);
+                $ns_records = getDNSRecords($domain, DNS_NS);
+                $soa_records = getDNSRecords($domain, DNS_SOA);
+                
+                // Get ALL records at once for any we might have missed
+                $all_records = getDNSRecords($domain, DNS_ALL);
+                ?>
+                
+                <div class="table-responsive">
+                  <table class="table table-sm table-hover mb-0" style="font-size: 14px;">
+                    <thead class="table-light">
+                      <tr>
+                        <th style="width: 100px;">Type</th>
+                        <th>Record Details</th>
+                        <th style="width: 100px;">Priority/TTL</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Nameservers (NS) -->
+                      <?php if (!empty($ns_records)): ?>
+                        <?php foreach ($ns_records as $record): ?>
+                        <tr>
+                          <td><span class="badge bg-primary">NS</span></td>
+                          <td><code><?php echo htmlspecialchars($record['target']); ?></code></td>
+                          <td><small><?php echo $record['ttl']; ?>s</small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      
+                      <!-- MX Records -->
+                      <?php if (!empty($mx_records)): ?>
+                        <?php foreach ($mx_records as $record): ?>
+                        <tr>
+                          <td><span class="badge bg-success">MX</span></td>
+                          <td><code><?php echo htmlspecialchars($record['target']); ?></code></td>
+                          <td>Pri: <?php echo $record['pri']; ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      
+                      <!-- A Records (IPv4) -->
+                      <?php if (!empty($a_records)): ?>
+                        <?php foreach ($a_records as $record): ?>
+                        <tr>
+                          <td><span class="badge bg-info">A</span></td>
+                          <td><code><?php echo htmlspecialchars($record['ip']); ?></code></td>
+                          <td><small><?php echo $record['ttl']; ?>s</small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      
+                      <!-- AAAA Records (IPv6) -->
+                      <?php if (!empty($aaaa_records)): ?>
+                        <?php foreach ($aaaa_records as $record): ?>
+                        <tr>
+                          <td><span class="badge bg-info">AAAA</span></td>
+                          <td><code style="font-size: 11px;"><?php echo htmlspecialchars($record['ipv6']); ?></code></td>
+                          <td><small><?php echo $record['ttl']; ?>s</small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      
+                      <!-- CNAME Records -->
+                      <?php if (!empty($cname_records)): ?>
+                        <?php foreach ($cname_records as $record): ?>
+                        <tr>
+                          <td><span class="badge bg-secondary">CNAME</span></td>
+                          <td><code><?php echo htmlspecialchars($record['target']); ?></code></td>
+                          <td><small><?php echo $record['ttl']; ?>s</small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      
+                      <!-- TXT Records (SPF, DKIM, DMARC) -->
+                      <?php if (!empty($txt_records)): ?>
+                        <?php foreach ($txt_records as $record): ?>
+                        <tr>
+                          <td><span class="badge bg-warning text-dark">TXT</span></td>
+                          <td>
+                            <code style="word-break: break-all; font-size: 11px;">
+                              <?php 
+                              $txt = $record['txt'];
+                              // Highlight important email-related records
+                              if (strpos($txt, 'v=spf') !== false) {
+                                  echo '<strong class="text-primary">SPF:</strong> ';
+                              } elseif (strpos($txt, 'v=DKIM') !== false) {
+                                  echo '<strong class="text-success">DKIM:</strong> ';
+                              } elseif (strpos($txt, 'v=DMARC') !== false) {
+                                  echo '<strong class="text-danger">DMARC:</strong> ';
+                              }
+                              echo htmlspecialchars(strlen($txt) > 80 ? substr($txt, 0, 80) . '...' : $txt); 
+                              ?>
+                            </code>
+                          </td>
+                          <td><small><?php echo $record['ttl']; ?>s</small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      
+                      <!-- SOA Record -->
+                      <?php if (!empty($soa_records)): ?>
+                        <?php foreach ($soa_records as $record): ?>
+                        <tr>
+                          <td><span class="badge bg-dark">SOA</span></td>
+                          <td><code style="font-size: 11px;"><?php echo htmlspecialchars($record['mname']); ?> (Serial: <?php echo $record['serial']; ?>)</code></td>
+                          <td><small><?php echo $record['ttl']; ?>s</small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      
+                      <?php if (empty($all_records)): ?>
+                        <tr>
+                          <td colspan="3" class="text-center text-muted">No DNS records found</td>
+                        </tr>
+                      <?php endif; ?>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <div class="p-3 bg-light border-top">
+                  <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Showing <?php echo count($all_records); ?> total DNS records. Cache may delay recent changes up to 48 hours.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- ======= Common SMTP Configurations ======= -->
         <div class="row mt-5 justify-content-center">
           <div class="col-lg-10">
-            <div class="info-wrap">
-              <h4 class="mb-4">Common SMTP Configurations</h4>
-              <div class="row">
-                <div class="col-lg-3 info">
-                  <i class="bi bi-microsoft"></i>
-                  <h5>Microsoft 365</h5>
-                  <p><strong>Host:</strong> smtp.office365.com<br>
-                     <strong>Port:</strong> 587<br>
-                     <strong>Encryption:</strong> TLS<br>
-                     <strong>Auth:</strong> App Password required</p>
-                </div>
+            <div class="card shadow-sm">
+              <div class="card-header bg-secondary text-white">
+                <h4 class="mb-0"><i class="bi bi-server"></i> Common SMTP Configurations</h4>
+              </div>
+              <div class="card-body p-4">
+                <div class="row g-4">
+                  <div class="col-lg-3 col-md-6">
+                    <div class="p-3 border rounded h-100 bg-light">
+                      <div class="text-center mb-3">
+                        <i class="bi bi-microsoft" style="font-size: 2rem; color: #0078d4;"></i>
+                      </div>
+                      <h5 class="text-center mb-3">Microsoft 365</h5>
+                      <p class="mb-2"><strong>Host:</strong> <code>smtp.office365.com</code></p>
+                      <p class="mb-2"><strong>Port:</strong> <code>587</code></p>
+                      <p class="mb-2"><strong>Encryption:</strong> <code>TLS</code></p>
+                      <p class="mb-0"><strong>Auth:</strong> <span class="badge bg-warning text-dark">App Password</span></p>
+                    </div>
+                  </div>
 
-                <div class="col-lg-3 info mt-4 mt-lg-0">
-                  <i class="bi bi-cloud"></i>
-                  <h5>Azure Comm Services</h5>
-                  <p><strong>Host:</strong> smtp.azurecomm.net<br>
-                     <strong>Port:</strong> 587<br>
-                     <strong>Encryption:</strong> TLS<br>
-                     <strong>Auth:</strong> ACS Endpoint & Key</p>
-                </div>
+                  <div class="col-lg-3 col-md-6">
+                    <div class="p-3 border rounded h-100 bg-light">
+                      <div class="text-center mb-3">
+                        <i class="bi bi-cloud" style="font-size: 2rem; color: #0078d4;"></i>
+                      </div>
+                      <h5 class="text-center mb-3">Azure Comm Services</h5>
+                      <p class="mb-2"><strong>Host:</strong> <code>smtp.azurecomm.net</code></p>
+                      <p class="mb-2"><strong>Port:</strong> <code>587</code></p>
+                      <p class="mb-2"><strong>Encryption:</strong> <code>TLS</code></p>
+                      <p class="mb-0"><strong>Auth:</strong> <span class="badge bg-info">Endpoint & Key</span></p>
+                    </div>
+                  </div>
 
-                <div class="col-lg-3 info mt-4 mt-lg-0">
-                  <i class="bi bi-google"></i>
-                  <h5>Gmail</h5>
-                  <p><strong>Host:</strong> smtp.gmail.com<br>
-                     <strong>Port:</strong> 587<br>
-                     <strong>Encryption:</strong> TLS<br>
-                     <strong>Auth:</strong> App Password required</p>
-                </div>
+                  <div class="col-lg-3 col-md-6">
+                    <div class="p-3 border rounded h-100 bg-light">
+                      <div class="text-center mb-3">
+                        <i class="bi bi-google" style="font-size: 2rem; color: #db4437;"></i>
+                      </div>
+                      <h5 class="text-center mb-3">Gmail</h5>
+                      <p class="mb-2"><strong>Host:</strong> <code>smtp.gmail.com</code></p>
+                      <p class="mb-2"><strong>Port:</strong> <code>587</code></p>
+                      <p class="mb-2"><strong>Encryption:</strong> <code>TLS</code></p>
+                      <p class="mb-0"><strong>Auth:</strong> <span class="badge bg-warning text-dark">App Password</span></p>
+                    </div>
+                  </div>
 
-                <div class="col-lg-3 info mt-4 mt-lg-0">
-                  <i class="bi bi-envelope-at"></i>
-                  <h5>Custom/cPanel</h5>
-                  <p><strong>Host:</strong> mail.yourdomain.com<br>
-                     <strong>Port:</strong> 587 or 465<br>
-                     <strong>Encryption:</strong> TLS or SSL<br>
-                     <strong>Auth:</strong> Regular password</p>
+                  <div class="col-lg-3 col-md-6">
+                    <div class="p-3 border rounded h-100 bg-light">
+                      <div class="text-center mb-3">
+                        <i class="bi bi-envelope-at" style="font-size: 2rem; color: #6c757d;"></i>
+                      </div>
+                      <h5 class="text-center mb-3">Custom/cPanel</h5>
+                      <p class="mb-2"><strong>Host:</strong> <code>mail.yourdomain.com</code></p>
+                      <p class="mb-2"><strong>Port:</strong> <code>587</code> or <code>465</code></p>
+                      <p class="mb-2"><strong>Encryption:</strong> <code>TLS</code> or <code>SSL</code></p>
+                      <p class="mb-0"><strong>Auth:</strong> <span class="badge bg-secondary">Regular Password</span></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
