@@ -89,6 +89,7 @@
         $smtp_password = $_POST['smtp_password'] ?? '';
         $smtp_encryption = $_POST['smtp_encryption'] ?? '';
         $test_email = $_POST['test_email'] ?? '';
+        $from_email = $_POST['from_email'] ?? '';
         
         // Include the PHP Email Form library
         if (file_exists('assets/vendor/php-email-form/php-email-form.php')) {
@@ -100,8 +101,13 @@
                 
                 $contact->to = $test_email;
                 $contact->from_name = 'SMTP Validator';
-                $contact->from_email = $smtp_username;
+                $contact->from_email = $from_email;
                 $contact->subject = 'SMTP Test - ' . date('Y-m-d H:i:s');
+                
+                // Add Reply-To header (important for Gmail SMTP)
+                $contact->options = array(
+                    'reply_to' => $from_email
+                );
                 
                 // SMTP configuration
                 $contact->smtp = array(
@@ -117,20 +123,31 @@
                 $contact->add_message('Port: ' . $smtp_port, 'SMTP Port');
                 $contact->add_message('Encryption: ' . $smtp_encryption, 'Encryption');
                 $contact->add_message('Username: ' . $smtp_username, 'SMTP Username');
+                $contact->add_message('From Email: ' . $from_email, 'From Email');
                 $contact->add_message('Timestamp: ' . date('Y-m-d H:i:s'), 'Test Time');
                 
                 $result = $contact->send();
                 
                 if ($result === 'OK') {
+                    $gmail_note = '';
+                    if (strpos($smtp_host, 'gmail') !== false) {
+                        $gmail_note = '<br><br><strong>📧 Gmail SMTP Note:</strong><br>
+                        <small class="text-info">Gmail may show the email as coming from your authenticated Gmail account (' . htmlspecialchars($smtp_username) . ') 
+                        but will set the Reply-To header to your specified From email (' . htmlspecialchars($from_email) . '). 
+                        This means replies will go to your business email, which is the desired behavior.</small>';
+                    }
+                    
                     $test_result = '
                     <div class="alert alert-success">
                         <i class="bi bi-check-circle"></i> 
                         <strong>✅ SUCCESS!</strong><br>
                         <strong>Result:</strong> SMTP configuration is working correctly!<br>
                         <strong>Status:</strong> Test email sent successfully to <code>' . htmlspecialchars($test_email) . '</code><br>
+                        <strong>From:</strong> <code>' . htmlspecialchars($from_email) . '</code> (set as Reply-To if using Gmail)<br>
                         <strong>Server:</strong> ' . htmlspecialchars($smtp_host) . ':' . htmlspecialchars($smtp_port) . ' (' . strtoupper($smtp_encryption) . ')<br>
                         <strong>Authentication:</strong> Successful with user <code>' . htmlspecialchars($smtp_username) . '</code><br>
-                        <small class="text-muted">✉️ Check your inbox (and spam folder) for the test message.</small>
+                        <small class="text-muted">✉️ Check your inbox (and spam folder) for the test message.</small>' . $gmail_note . '
+                    </div>';
                     </div>';
                 } else {
                     // Parse the error message for more detailed information
@@ -161,6 +178,7 @@
                         • Port: <code>' . htmlspecialchars($smtp_port) . '</code><br>
                         • Encryption: <code>' . strtoupper($smtp_encryption) . '</code><br>
                         • Username: <code>' . htmlspecialchars($smtp_username) . '</code><br>
+                        • From Email: <code>' . htmlspecialchars($from_email) . '</code><br>
                         • Test Email: <code>' . htmlspecialchars($test_email) . '</code><br><br>
                         <strong>🚫 Error Details:</strong><br>
                         <code>' . $error_details . '</code>
@@ -255,11 +273,19 @@
                   </select>
                 </div>
                 <div class="col-md-6 form-group mt-3">
-                  <label for="test_email">Test Email Address</label>
+                  <label for="test_email">Test Email Address (To)</label>
                   <input type="email" class="form-control" name="test_email" id="test_email" 
-                         placeholder="your@email.com" 
+                         placeholder="recipient@email.com" 
                          value="<?php echo htmlspecialchars($_POST['test_email'] ?? ''); ?>" required>
                 </div>
+              </div>
+              
+              <div class="form-group mt-3">
+                <label for="from_email">From Email Address</label>
+                <input type="email" class="form-control" name="from_email" id="from_email" 
+                       placeholder="sender@yourdomain.com" 
+                       value="<?php echo htmlspecialchars($_POST['from_email'] ?? ''); ?>" required>
+                <small class="form-text text-muted">This should typically match your SMTP username or be from the same domain</small>
               </div>
               
               <div class="form-group mt-3">

@@ -23,8 +23,17 @@
   
   $contact->to = $receiving_email_address;
   $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
+  // Use Azure-verified sender email instead of customer email
+  $contact->from_email = smtp_from_email;
   $contact->subject = $_POST['subject'];
+  
+  // Override the default mailer property that gets set to forms@localhost
+  $contact->mailer = smtp_from_email;
+
+  // Set Reply-To header to ensure replies go to the customer's email
+  $contact->options = array(
+    'reply_to' => $_POST['email']
+  );
 
   // SMTP configuration using constants from config.php
   $contact->smtp = array(
@@ -35,8 +44,15 @@
     'encryption' => 'tls'
   );
 
-  // Add debugging information
-  error_log("SMTP Config: Host=" . smtp_host . ", Port=" . smtp_port . ", User=" . smtp_username);
+  // Add comprehensive debugging information
+  error_log("=== SMTP DEBUG INFO ===");
+  error_log("SMTP Host from config: " . smtp_host);
+  error_log("SMTP Port from config: " . smtp_port);
+  error_log("SMTP User from config: " . smtp_username);
+  error_log("SERVER_NAME: " . ($_SERVER['SERVER_NAME'] ?? 'Not set'));
+  error_log("HTTP_HOST: " . ($_SERVER['HTTP_HOST'] ?? 'Not set'));
+  error_log("Config file path: " . realpath('../../private/config.php'));
+  error_log("=== END DEBUG INFO ===");
    
   $contact->add_message( $_POST['name'], 'From');
   $contact->add_message( $_POST['email'], 'Email');
