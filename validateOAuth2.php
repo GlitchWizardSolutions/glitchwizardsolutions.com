@@ -480,23 +480,20 @@
                   <li><strong>That's it!</strong> Your OAuth2 app can now send from those addresses too</li>
                 </ol>
 
-                <h5 class="mb-3"><i class="bi bi-6-circle-fill text-primary"></i> Configure Your DNS (If Using Azure)</h5>
-                <div class="alert alert-warning mb-4">
-                  <i class="bi bi-exclamation-triangle"></i> 
-                  <strong>Note:</strong> You mentioned DNS is partially set up with Azure. Ensure these records exist:
-                </div>
+                <h5 class="mb-3"><i class="bi bi-6-circle-fill text-primary"></i> Verify Your DNS Records for Email Delivery</h5>
+                <p class="mb-3">For reliable email delivery, ensure your domain has proper DNS records configured. These are standard email authentication records, not Azure-specific:</p>
                 <ul class="mb-4">
                   <li><strong>MX Record:</strong> Points to Microsoft 365 mail servers (e.g., glitchwizardsolutions-com.mail.protection.outlook.com)</li>
                   <li><strong>SPF Record (TXT):</strong> <code>v=spf1 include:spf.protection.outlook.com -all</code></li>
                   <li><strong>DKIM Records:</strong> Two CNAME records as specified in Microsoft 365 Admin Center</li>
                   <li><strong>DMARC Record (TXT):</strong> <code>v=DMARC1; p=quarantine; rua=mailto:dmarc@glitchwizardsolutions.com</code></li>
                 </ul>
-                <p class="mb-4">To configure these:</p>
+                <p class="mb-4"><strong>To configure these in your domain registrar or DNS provider:</strong></p>
                 <ol class="mb-4">
-                  <li><strong>Microsoft 365 Admin Center:</strong> Settings → Domains → glitchwizardsolutions.com</li>
-                  <li><strong>Click:</strong> "DNS records"</li>
-                  <li><strong>Follow:</strong> The specific values Microsoft provides for MX, SPF, DKIM, and DMARC</li>
-                  <li><strong>Add these records:</strong> In your Azure DNS zone or domain registrar</li>
+                  <li><strong>Get the correct values:</strong> Microsoft 365 Admin Center → Settings → Domains → glitchwizardsolutions.com → DNS records</li>
+                  <li><strong>Add to your DNS:</strong> Go to your domain registrar (e.g., GoDaddy, Namecheap) or DNS provider (e.g., Cloudflare, your hosting provider)</li>
+                  <li><strong>Copy the values:</strong> Add the MX, SPF (TXT), DKIM (CNAME), and DMARC (TXT) records exactly as Microsoft provides</li>
+                  <li><strong>Wait for propagation:</strong> DNS changes can take up to 48 hours to fully propagate</li>
                 </ol>
 
                 <h5 class="mb-3"><i class="bi bi-7-circle-fill text-primary"></i> Test Your Configuration</h5>
