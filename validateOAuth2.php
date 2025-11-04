@@ -287,7 +287,7 @@
                 <input type="text" class="form-control" name="tenant_id" id="tenant_id" 
                        placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" 
                        value="" autocomplete="off" required>
-                <small class="form-text text-muted">Find in Azure AD → Overview → Directory (tenant) ID</small>
+                <small class="form-text text-muted">Find in Microsoft Entra ID → Overview → Directory (tenant) ID</small>
               </div>
               
               <div class="form-group mt-3">
@@ -295,7 +295,7 @@
                 <input type="text" class="form-control" name="client_id" id="client_id" 
                        placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" 
                        value="" autocomplete="off" required>
-                <small class="form-text text-muted">Find in Azure AD → App Registrations → Your App → Application (client) ID</small>
+                <small class="form-text text-muted">Find in Microsoft Entra ID → App Registrations → Your App → Application (client) ID</small>
               </div>
               
               <div class="form-group mt-3">
@@ -303,7 +303,7 @@
                 <input type="password" class="form-control" name="client_secret" id="client_secret" 
                        placeholder="Your client secret value (not the Secret ID)" 
                        value="" autocomplete="off" required>
-                <small class="form-text text-muted">Find in Azure AD → App Registrations → Your App → Certificates & secrets</small>
+                <small class="form-text text-muted">Find in Microsoft Entra ID → App Registrations → Your App → Certificates & secrets</small>
               </div>
               
               <div class="form-group mt-3">
@@ -388,17 +388,33 @@
                   <code style="color: #0f0;">composer require phpmailer/phpmailer league/oauth2-client</code>
                 </div>
 
-                <h5 class="mb-3"><i class="bi bi-2-circle-fill text-primary"></i> Register an Application in Azure Active Directory</h5>
+                <h5 class="mb-3"><i class="bi bi-2-circle-fill text-primary"></i> Register an Application in Microsoft Entra ID (Azure AD)</h5>
                 <ol class="mb-4">
                   <li><strong>Go to Azure Portal:</strong> <a href="https://portal.azure.com" target="_blank">https://portal.azure.com</a></li>
-                  <li><strong>Navigate to:</strong> Azure Active Directory → App registrations → New registration</li>
+                  <li><strong>Navigate to:</strong> Search for "Microsoft Entra ID" in the top search bar (formerly Azure Active Directory)</li>
+                  <li><strong>Click on:</strong> "Microsoft Entra ID" (with the blue/teal icon)</li>
+                  <li><strong>In the left menu, click:</strong> App registrations → + New registration</li>
                   <li><strong>Name your app:</strong> e.g., "My Website SMTP OAuth2"</li>
-                  <li><strong>Supported account types:</strong> Select "Accounts in this organizational directory only"</li>
+                  <li><strong>Supported account types:</strong> Select "Accounts in this organizational directory only (Single tenant)"</li>
                   <li><strong>Redirect URI:</strong> Leave blank (not needed for client credentials flow)</li>
                   <li><strong>Click:</strong> Register</li>
-                  <li><strong>Copy:</strong> Application (client) ID - you'll need this</li>
-                  <li><strong>Copy:</strong> Directory (tenant) ID - you'll need this too</li>
+                  <li><strong>Copy these values from the Overview page:</strong>
+                    <ul>
+                      <li><strong>Application (client) ID</strong> - you'll need this</li>
+                      <li><strong>Directory (tenant) ID</strong> - you'll need this too</li>
+                    </ul>
+                  </li>
                 </ol>
+                
+                <div class="alert alert-info mb-4">
+                  <i class="bi bi-info-circle"></i> 
+                  <strong>Note:</strong> Microsoft rebranded "Azure Active Directory" to "Microsoft Entra ID". Don't confuse it with:
+                  <ul class="mb-0 mt-2">
+                    <li>❌ <strong>Azure Active Directory B2C</strong> (for customer-facing apps)</li>
+                    <li>❌ <strong>Active Directory Domain Services</strong> (on-premises AD)</li>
+                    <li>✅ Choose <strong>Microsoft Entra ID</strong> (the main identity service)</li>
+                  </ul>
+                </div>
 
                 <h5 class="mb-3"><i class="bi bi-3-circle-fill text-primary"></i> Create a Client Secret</h5>
                 <ol class="mb-4">
