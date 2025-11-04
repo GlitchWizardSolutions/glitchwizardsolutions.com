@@ -55,20 +55,22 @@ try {
                         </div>
                         <div style='background: #f8f9fa; padding: 15px; border: 1px solid #e9ecef;'>
                             <h3 style='color: #673AB7; border-bottom: 2px solid #673AB7; padding-bottom: 10px; margin-top: 0;'>Contact Details</h3>
-                            <table style='width: 100%; margin: 15px 0; table-layout: fixed; word-wrap: break-word;'>
-                                <tr>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; width: 80px; vertical-align: top;'><strong>Name:</strong></td>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; word-wrap: break-word; overflow-wrap: break-word;'>$name</td>
-                                </tr>
-                                <tr>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; width: 80px; vertical-align: top;'><strong>Email:</strong></td>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; word-wrap: break-word; overflow-wrap: break-word;'><a href='mailto:$email' style='word-break: break-all;'>$email</a></td>
-                                </tr>
-                                <tr>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; width: 80px; vertical-align: top;'><strong>Subject:</strong></td>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; word-wrap: break-word; overflow-wrap: break-word;'>$subject</td>
-                                </tr>
-                            </table>
+                            
+                            <div style='background: white; padding: 12px; border: 1px solid #dee2e6; margin-bottom: 10px;'>
+                                <div style='color: #666; font-size: 12px; font-weight: bold; margin-bottom: 5px;'>NAME</div>
+                                <div style='color: #333; word-wrap: break-word; overflow-wrap: break-word;'>$name</div>
+                            </div>
+                            
+                            <div style='background: white; padding: 12px; border: 1px solid #dee2e6; margin-bottom: 10px;'>
+                                <div style='color: #666; font-size: 12px; font-weight: bold; margin-bottom: 5px;'>EMAIL</div>
+                                <div style='color: #333; word-wrap: break-word; overflow-wrap: break-word;'><a href='mailto:$email' style='color: #673AB7; word-break: break-all;'>$email</a></div>
+                            </div>
+                            
+                            <div style='background: white; padding: 12px; border: 1px solid #dee2e6; margin-bottom: 15px;'>
+                                <div style='color: #666; font-size: 12px; font-weight: bold; margin-bottom: 5px;'>SUBJECT</div>
+                                <div style='color: #333; word-wrap: break-word; overflow-wrap: break-word;'>$subject</div>
+                            </div>
+                            
                             <h3 style='color: #673AB7; border-bottom: 2px solid #673AB7; padding-bottom: 10px;'>Message</h3>
                             <div style='background: white; padding: 15px; border: 1px solid #dee2e6; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word;'>$message</div>
                             <div style='margin-top: 15px; padding: 15px; background: #e7f3ff; border-left: 4px solid #2196F3;'>
@@ -113,41 +115,45 @@ try {
                 'contentType' => 'HTML',
                 'content' => "
                     <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
-                        <div style='background: linear-gradient(135deg, #673AB7, #9C27B0); padding: 30px; text-align: center;'>
-                            <h1 style='color: white; margin: 0; font-size: 28px;'>Thank You, $name!</h1>
+                        <div style='background: #673AB7; padding: 20px; text-align: center;'>
+                            <h2 style='color: white; margin: 0;'>Thank You, $name!</h2>
                         </div>
-                        <div style='background: #f8f9fa; padding: 30px; border: 1px solid #e9ecef;'>
-                            <p style='font-size: 16px; color: #333; line-height: 1.6;'>
+                        <div style='background: #f8f9fa; padding: 15px; border: 1px solid #e9ecef;'>
+                            <p style='font-size: 16px; color: #333; line-height: 1.6; margin-top: 0;'>
                                 We've successfully received your message and appreciate you taking the time to reach out to us.
                             </p>
-                            <div style='background: white; padding: 20px; border-left: 4px solid #28a745; margin: 20px 0;'>
+                            <div style='background: white; padding: 15px; border-left: 4px solid #28a745; margin: 15px 0;'>
                                 <p style='margin: 0; color: #28a745; font-weight: bold;'>✅ Your message has been received</p>
                                 <p style='margin: 10px 0 0 0; font-size: 14px; color: #666;'>
                                     Our team will review your inquiry and respond within 1-2 business days.
                                 </p>
                             </div>
-                            <h3 style='color: #673AB7; margin-top: 30px;'>What You Sent:</h3>
-                            <table style='width: 100%; margin: 15px 0; background: white; border: 1px solid #dee2e6;'>
-                                <tr><td style='padding: 12px; border-bottom: 1px solid #dee2e6;'><strong>Subject:</strong></td>
-                                    <td style='padding: 12px; border-bottom: 1px solid #dee2e6;'>$subject</td></tr>
-                                <tr><td style='padding: 12px;'><strong>Your Email:</strong></td>
-                                    <td style='padding: 12px;'>$email</td></tr>
-                            </table>
-                            <div style='background: white; padding: 15px; border: 1px solid #dee2e6; margin-top: 15px;'>
-                                <strong>Your Message:</strong>
-                                <p style='margin: 10px 0 0 0; white-space: pre-wrap; color: #555;'>$message</p>
+                            
+                            <h3 style='color: #673AB7; border-bottom: 2px solid #673AB7; padding-bottom: 10px;'>What You Sent</h3>
+                            
+                            <div style='background: white; padding: 12px; border: 1px solid #dee2e6; margin-bottom: 10px;'>
+                                <div style='color: #666; font-size: 12px; font-weight: bold; margin-bottom: 5px;'>SUBJECT</div>
+                                <div style='color: #333; word-wrap: break-word; overflow-wrap: break-word;'>$subject</div>
                             </div>
-                            <div style='margin-top: 30px; padding: 20px; background: #fff3cd; border-left: 4px solid #ffc107;'>
+                            
+                            <div style='background: white; padding: 12px; border: 1px solid #dee2e6; margin-bottom: 15px;'>
+                                <div style='color: #666; font-size: 12px; font-weight: bold; margin-bottom: 5px;'>YOUR EMAIL</div>
+                                <div style='color: #333; word-wrap: break-word; overflow-wrap: break-word;'>$email</div>
+                            </div>
+                            
+                            <h3 style='color: #673AB7; border-bottom: 2px solid #673AB7; padding-bottom: 10px;'>Your Message</h3>
+                            <div style='background: white; padding: 15px; border: 1px solid #dee2e6; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; color: #555;'>$message</div>
+                            
+                            <div style='margin-top: 15px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107;'>
                                 <p style='margin: 0; color: #856404;'>
                                     <strong>📧 Need to add more information?</strong><br>
                                     Simply reply to this email and we'll get your updated message.
                                 </p>
                             </div>
                         </div>
-                        <div style='background: #343a40; color: white; padding: 20px; text-align: center;'>
-                            <p style='margin: 0 0 10px 0; font-size: 16px; font-weight: bold;'>GlitchWizard Solutions</p>
-                            <p style='margin: 0; font-size: 14px;'>Digital Foundations to Build Your Small Business</p>
-                            <p style='margin: 15px 0 0 0; font-size: 12px; opacity: 0.8;'>
+                        <div style='background: #343a40; color: white; padding: 15px; text-align: center; font-size: 12px;'>
+                            <p style='margin: 0;'>GlitchWizard Solutions - Digital Foundations to Build Your Small Business</p>
+                            <p style='margin: 5px 0 0 0;'>
                                 <a href='https://glitchwizardsolutions.com' style='color: #fff; text-decoration: none;'>glitchwizardsolutions.com</a>
                             </p>
                         </div>
