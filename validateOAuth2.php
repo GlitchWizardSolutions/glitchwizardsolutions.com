@@ -150,6 +150,7 @@
             $mail->SMTPAuth = false; // We'll handle auth manually
             
             // Create a custom OAuth provider for client credentials
+            // We provide the access token as refreshToken and override getToken()
             $customOAuth = new class($provider, $client_id, $client_secret, $from_email, $accessToken) extends OAuth {
                 private $cachedToken;
                 
@@ -159,6 +160,7 @@
                         'clientId' => $clientId,
                         'clientSecret' => $clientSecret,
                         'userName' => $userName,
+                        'refreshToken' => 'dummy', // Required by parent, but not used
                     ]);
                     $this->cachedToken = $accessToken;
                 }
