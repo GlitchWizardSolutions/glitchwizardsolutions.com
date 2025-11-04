@@ -202,29 +202,66 @@
                 </div>';
             }
             
-        } catch (Exception $e) {
+        } catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+            // Catch OAuth2-specific errors
             $raw_error_details = $e->getMessage();
+            $response_body = $e->getResponseBody();
             $troubleshooting_tip = '';
+            
+            // Get detailed error info if available
+            $error_description = '';
+            if (isset($response_body['error_description'])) {
+                $error_description = $response_body['error_description'];
+            }
             
             // Provide specific troubleshooting
             if (strpos($raw_error_details, 'invalid_client') !== false) {
-                $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> Invalid Client ID or Client Secret. Verify your Azure AD App Registration credentials.';
+                $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> Invalid Client ID or Client Secret. Double-check:
+                <ul>
+                    <li>Client ID matches the "Application (client) ID" in Azure</li>
+                    <li>Client Secret is the <strong>Value</strong> (not Secret ID)</li>
+                    <li>No extra spaces when copying/pasting</li>
+                    <li>Secret hasn\'t expired</li>
+                </ul>';
+            } elseif (strpos($raw_error_details, 'invalid_request') !== false) {
+                $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> Invalid request format. Common causes:
+                <ul>
+                    <li><strong>Tenant ID is wrong</strong> - Copy "Directory (tenant) ID" from Azure</li>
+                    <li>Client Secret contains special characters that need escaping</li>
+                    <li>Scope format is incorrect</li>
+                </ul>';
             } elseif (strpos($raw_error_details, 'unauthorized_client') !== false) {
-                $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> The application doesn\'t have permission to send email. Add "Mail.Send" API permission in Azure AD.';
+                $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> The application doesn\'t have permission. Check:
+                <ul>
+                    <li>Add "Mail.Send" API permission (Microsoft Graph → Application permissions)</li>
+                    <li>Click "Grant admin consent" button</li>
+                    <li>Wait 5-10 minutes for permissions to propagate</li>
+                </ul>';
             } elseif (strpos($raw_error_details, 'invalid_grant') !== false) {
                 $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> Grant issue. Ensure admin consent is granted for the Mail.Send permission.';
             } elseif (strpos($raw_error_details, 'SMTP Error') !== false) {
                 $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> SMTP connection issue. Verify the from email address has an active mailbox in Microsoft 365.';
             } else {
-                $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> Check your Azure AD App Registration settings and API permissions.';
+                $troubleshooting_tip = '<br><strong>💡 Troubleshooting:</strong> Check your Microsoft Entra ID App Registration settings and API permissions.';
             }
             
             $test_result = '
             <div class="alert alert-danger">
                 <i class="bi bi-exclamation-triangle"></i> 
                 <strong>❌ OAuth2 SMTP TEST FAILED</strong><br>
-                <strong>Error Message:</strong> ' . htmlspecialchars($raw_error_details) . '<br>
+                <strong>Error:</strong> ' . htmlspecialchars($raw_error_details) . '<br>
+                ' . ($error_description ? '<strong>Details:</strong> ' . htmlspecialchars($error_description) . '<br>' : '') . '
                 ' . $troubleshooting_tip . '
+            </div>';
+        } catch (Exception $e) {
+            // Catch all other errors
+            $raw_error_details = $e->getMessage();
+            $test_result = '
+            <div class="alert alert-danger">
+                <i class="bi bi-exclamation-triangle"></i> 
+                <strong>❌ UNEXPECTED ERROR</strong><br>
+                <strong>Error Message:</strong> ' . htmlspecialchars($raw_error_details) . '<br>
+                <strong>💡 Troubleshooting:</strong> This is an unexpected error. Check error_log for details.
             </div>';
         }
         
