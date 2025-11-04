@@ -442,15 +442,42 @@
                   <li><strong>Verify:</strong> Status shows green checkmark "Granted for [Your Organization]"</li>
                 </ol>
 
-                <h5 class="mb-3"><i class="bi bi-5-circle-fill text-primary"></i> Enable SMTP AUTH in Exchange Online (Optional but Recommended)</h5>
+                <div class="alert alert-success mb-4">
+                  <i class="bi bi-check-circle"></i> 
+                  <strong>Good News About OAuth2!</strong>
+                  <ul class="mb-0 mt-2">
+                    <li>✅ <strong>Multiple Email Addresses:</strong> You can send from ANY mailbox in your tenant (including shared mailboxes)</li>
+                    <li>✅ <strong>Multiple Domains:</strong> You can send from email addresses on ANY verified domain in your Microsoft 365 tenant</li>
+                    <li>✅ <strong>No Per-User Setup:</strong> The <code>Mail.Send</code> permission grants access to all mailboxes - no individual user configuration needed!</li>
+                    <li>✅ <strong>Shared Mailboxes:</strong> Works perfectly with shared mailboxes (e.g., support@, info@, noreply@)</li>
+                  </ul>
+                </div>
+
+                <h5 class="mb-3"><i class="bi bi-5-circle-fill text-primary"></i> Using Multiple Email Addresses & Domains</h5>
+                <div class="alert alert-info mb-4">
+                  <i class="bi bi-lightbulb"></i> 
+                  <strong>How it works:</strong> With OAuth2 Client Credentials and the <code>Mail.Send</code> permission, your application can send email from:
+                </div>
+                <ul class="mb-4">
+                  <li><strong>Any user mailbox:</strong> webdev@glitchwizardsolutions.com, admin@glitchwizardsolutions.com, etc.</li>
+                  <li><strong>Any shared mailbox:</strong> info@glitchwizardsolutions.com, support@glitchwizardsolutions.com, noreply@glitchwizardsolutions.com</li>
+                  <li><strong>Multiple domains:</strong> If you have multiple verified domains (e.g., glitchwizardsolutions.com AND yourotherdomain.com), you can send from both!</li>
+                  <li><strong>Requirements:</strong>
+                    <ul>
+                      <li>The domain must be verified in Microsoft 365 Admin Center → Domains</li>
+                      <li>The mailbox (user or shared) must exist in your tenant</li>
+                      <li>Just change the "From Email" in your code - no additional setup needed</li>
+                    </ul>
+                  </li>
+                </ul>
+                
+                <p class="mb-4"><strong>To send from a different domain:</strong></p>
                 <ol class="mb-4">
-                  <li><strong>Go to:</strong> <a href="https://admin.microsoft.com" target="_blank">Microsoft 365 Admin Center</a></li>
-                  <li><strong>Navigate to:</strong> Users → Active users</li>
-                  <li><strong>Select:</strong> The user whose email you'll send from (e.g., webdev@glitchwizardsolutions.com)</li>
-                  <li><strong>Click:</strong> Mail tab</li>
-                  <li><strong>Click:</strong> "Manage email apps"</li>
-                  <li><strong>Ensure:</strong> "Authenticated SMTP" is checked</li>
-                  <li><strong>Click:</strong> Save changes</li>
+                  <li><strong>Microsoft 365 Admin Center:</strong> Settings → Domains → Add domain</li>
+                  <li><strong>Follow the wizard</strong> to verify ownership (usually a TXT record)</li>
+                  <li><strong>Configure DNS records</strong> (MX, SPF, DKIM, DMARC) for the new domain</li>
+                  <li><strong>Create mailboxes</strong> using the new domain (@newdomain.com)</li>
+                  <li><strong>That's it!</strong> Your OAuth2 app can now send from those addresses too</li>
                 </ol>
 
                 <h5 class="mb-3"><i class="bi bi-6-circle-fill text-primary"></i> Configure Your DNS (If Using Azure)</h5>
