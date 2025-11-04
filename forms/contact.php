@@ -50,24 +50,30 @@ try {
                 'contentType' => 'HTML',
                 'content' => "
                     <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
-                        <div style='background: linear-gradient(135deg, #673AB7, #9C27B0); padding: 20px; text-align: center;'>
+                        <div style='background: #673AB7; padding: 20px; text-align: center;'>
                             <h2 style='color: white; margin: 0;'>New Contact Form Submission</h2>
                         </div>
-                        <div style='background: #f8f9fa; padding: 30px; border: 1px solid #e9ecef;'>
-                            <h3 style='color: #673AB7; border-bottom: 2px solid #673AB7; padding-bottom: 10px;'>Contact Details</h3>
-                            <table style='width: 100%; margin: 20px 0;'>
-                                <tr><td style='padding: 8px; background: white; border: 1px solid #dee2e6;'><strong>Name:</strong></td>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6;'>$name</td></tr>
-                                <tr><td style='padding: 8px; background: white; border: 1px solid #dee2e6;'><strong>Email:</strong></td>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6;'><a href='mailto:$email'>$email</a></td></tr>
-                                <tr><td style='padding: 8px; background: white; border: 1px solid #dee2e6;'><strong>Subject:</strong></td>
-                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6;'>$subject</td></tr>
+                        <div style='background: #f8f9fa; padding: 15px; border: 1px solid #e9ecef;'>
+                            <h3 style='color: #673AB7; border-bottom: 2px solid #673AB7; padding-bottom: 10px; margin-top: 0;'>Contact Details</h3>
+                            <table style='width: 100%; margin: 15px 0; table-layout: fixed; word-wrap: break-word;'>
+                                <tr>
+                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; width: 80px; vertical-align: top;'><strong>Name:</strong></td>
+                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; word-wrap: break-word; overflow-wrap: break-word;'>$name</td>
+                                </tr>
+                                <tr>
+                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; width: 80px; vertical-align: top;'><strong>Email:</strong></td>
+                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; word-wrap: break-word; overflow-wrap: break-word;'><a href='mailto:$email' style='word-break: break-all;'>$email</a></td>
+                                </tr>
+                                <tr>
+                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; width: 80px; vertical-align: top;'><strong>Subject:</strong></td>
+                                    <td style='padding: 8px; background: white; border: 1px solid #dee2e6; word-wrap: break-word; overflow-wrap: break-word;'>$subject</td>
+                                </tr>
                             </table>
                             <h3 style='color: #673AB7; border-bottom: 2px solid #673AB7; padding-bottom: 10px;'>Message</h3>
-                            <div style='background: white; padding: 20px; border: 1px solid #dee2e6; white-space: pre-wrap;'>$message</div>
-                            <div style='margin-top: 20px; padding: 15px; background: #e7f3ff; border-left: 4px solid #2196F3;'>
+                            <div style='background: white; padding: 15px; border: 1px solid #dee2e6; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word;'>$message</div>
+                            <div style='margin-top: 15px; padding: 15px; background: #e7f3ff; border-left: 4px solid #2196F3;'>
                                 <strong>💡 Quick Actions:</strong><br>
-                                <a href='mailto:$email?subject=Re: $subject' style='color: #673AB7; text-decoration: none;'>
+                                <a href='mailto:$email?subject=Re: $subject' style='color: #673AB7; text-decoration: none; word-break: break-all;'>
                                     ✉️ Reply to $name
                                 </a>
                             </div>
