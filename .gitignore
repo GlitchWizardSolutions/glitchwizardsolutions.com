@@ -1,0 +1,50 @@
+# Composer dependencies
+# vendor/ (temporarily committed for deployment - uncomment when SSH access available)
+composer.phar
+
+# Composer lock file (some prefer to commit this, but for solo projects you can ignore it)
+# composer.lock
+
+# Private configuration files
+../private/config.php
+
+# Log files
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules (if you ever use npm)
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Upload directories (optional - depends on your needs)
+# uploads/
+
+# Session files
+sessions/
