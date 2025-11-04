@@ -142,25 +142,36 @@
                 'scope' => 'https://outlook.office365.com/.default'
             ]);
             
-            // Configure SMTP with OAuth2
+            // Configure SMTP
             $mail->isSMTP();
             $mail->Host = 'smtp.office365.com';
             $mail->Port = 587;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->SMTPAuth = false; // We'll handle auth manually
+            
+            // Create a custom OAuth provider for client credentials
+            $customOAuth = new class($provider, $client_id, $client_secret, $from_email, $accessToken) extends OAuth {
+                private $cachedToken;
+                
+                public function __construct($provider, $clientId, $clientSecret, $userName, $accessToken) {
+                    parent::__construct([
+                        'provider' => $provider,
+                        'clientId' => $clientId,
+                        'clientSecret' => $clientSecret,
+                        'userName' => $userName,
+                    ]);
+                    $this->cachedToken = $accessToken;
+                }
+                
+                // Override getToken to return our pre-fetched token
+                protected function getToken() {
+                    return $this->cachedToken;
+                }
+            };
+            
             $mail->SMTPAuth = true;
             $mail->AuthType = 'XOAUTH2';
-            
-            // Set up OAuth2
-            $mail->setOAuth(
-                new OAuth([
-                    'provider' => $provider,
-                    'clientId' => $client_id,
-                    'clientSecret' => $client_secret,
-                    'refreshToken' => '',
-                    'userName' => $from_email,
-                    'accessToken' => $accessToken->getToken()
-                ])
-            );
+            $mail->setOAuth($customOAuth);
             
             // Email content
             $mail->setFrom($from_email, 'OAuth2 SMTP Validator');
