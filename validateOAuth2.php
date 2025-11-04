@@ -18,9 +18,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>OAuth2 SMTP Validator - Microsoft 365 - GlitchWizard Solutions</title>
-  <meta content="OAuth2 SMTP email configuration testing tool for Microsoft 365 with modern authentication" name="description">
-  <meta content="OAuth2, SMTP, Microsoft 365, modern authentication, email server validation" name="keywords">
+  <title>OAuth2 Email Validator - Microsoft Graph API - GlitchWizard Solutions</title>
+  <meta content="OAuth2 email configuration testing tool for Microsoft 365 using Graph API with client credentials flow" name="description">
+  <meta content="OAuth2, Microsoft Graph API, Microsoft 365, email automation, client credentials" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -123,9 +123,6 @@
         $test_email = $_POST['test_email'] ?? '';
         
         try {
-            // Create a new PHPMailer instance
-            $mail = new PHPMailer(true);
-            
             // Configure OAuth2 provider for Microsoft 365
             $provider = new GenericProvider([
                 'clientId'                => $client_id,
@@ -134,85 +131,85 @@
                 'urlAuthorize'            => "https://login.microsoftonline.com/$tenant_id/oauth2/v2.0/authorize",
                 'urlAccessToken'          => "https://login.microsoftonline.com/$tenant_id/oauth2/v2.0/token",
                 'urlResourceOwnerDetails' => '',
-                'scopes'                  => 'https://outlook.office365.com/.default'
+                'scopes'                  => 'https://graph.microsoft.com/.default'
             ]);
             
             // Get OAuth2 access token using client credentials flow
             $accessToken = $provider->getAccessToken('client_credentials', [
-                'scope' => 'https://outlook.office365.com/.default'
+                'scope' => 'https://graph.microsoft.com/.default'
             ]);
             
-            // Configure SMTP
-            $mail->isSMTP();
-            $mail->Host = 'smtp.office365.com';
-            $mail->Port = 587;
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->SMTPAuth = false; // We'll handle auth manually
+            // Prepare email message for Microsoft Graph API
+            $emailMessage = [
+                'message' => [
+                    'subject' => 'OAuth2 Graph API Test - ' . date('Y-m-d H:i:s'),
+                    'body' => [
+                        'contentType' => 'HTML',
+                        'content' => '<h3>OAuth2 Graph API Test Message</h3>
+                                     <p>This is a test message sent using OAuth2 authentication with Microsoft Graph API.</p>
+                                     <ul>
+                                       <li><strong>Method:</strong> Microsoft Graph API (not SMTP)</li>
+                                       <li><strong>Authentication:</strong> Client Credentials Flow</li>
+                                       <li><strong>Tenant ID:</strong> ' . htmlspecialchars($tenant_id) . '</li>
+                                       <li><strong>Client ID:</strong> ' . htmlspecialchars($client_id) . '</li>
+                                       <li><strong>From Email:</strong> ' . htmlspecialchars($from_email) . '</li>
+                                       <li><strong>Test Time:</strong> ' . date('Y-m-d H:i:s T') . '</li>
+                                     </ul>
+                                     <p><small>✅ This email was sent successfully using Microsoft Graph API with application permissions (Mail.Send).</small></p>'
+                    ],
+                    'toRecipients' => [
+                        [
+                            'emailAddress' => [
+                                'address' => $test_email
+                            ]
+                        ]
+                    ]
+                ],
+                'saveToSentItems' => 'true'
+            ];
             
-            // Create a custom OAuth provider for client credentials
-            // We provide the access token as refreshToken and override getToken()
-            $customOAuth = new class($provider, $client_id, $client_secret, $from_email, $accessToken) extends OAuth {
-                private $cachedToken;
-                
-                public function __construct($provider, $clientId, $clientSecret, $userName, $accessToken) {
-                    parent::__construct([
-                        'provider' => $provider,
-                        'clientId' => $clientId,
-                        'clientSecret' => $clientSecret,
-                        'userName' => $userName,
-                        'refreshToken' => 'dummy', // Required by parent, but not used
-                    ]);
-                    $this->cachedToken = $accessToken;
-                }
-                
-                // Override getToken to return our pre-fetched token
-                protected function getToken() {
-                    return $this->cachedToken;
-                }
-            };
+            // Send email via Microsoft Graph API
+            $graphUrl = "https://graph.microsoft.com/v1.0/users/$from_email/sendMail";
             
-            $mail->SMTPAuth = true;
-            $mail->AuthType = 'XOAUTH2';
-            $mail->setOAuth($customOAuth);
+            $ch = curl_init($graphUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($emailMessage));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $accessToken->getToken(),
+                'Content-Type: application/json'
+            ]);
             
-            // Email content
-            $mail->setFrom($from_email, 'OAuth2 SMTP Validator');
-            $mail->addAddress($test_email);
-            $mail->Subject = 'OAuth2 SMTP Test - ' . date('Y-m-d H:i:s');
-            $mail->isHTML(true);
-            $mail->Body = '<h3>OAuth2 SMTP Test Message</h3>
-                          <p>This is a test message sent using OAuth2 authentication with Microsoft 365.</p>
-                          <ul>
-                            <li><strong>Tenant ID:</strong> ' . htmlspecialchars($tenant_id) . '</li>
-                            <li><strong>Client ID:</strong> ' . htmlspecialchars($client_id) . '</li>
-                            <li><strong>From Email:</strong> ' . htmlspecialchars($from_email) . '</li>
-                            <li><strong>Test Time:</strong> ' . date('Y-m-d H:i:s T') . '</li>
-                          </ul>';
-            
-            // Enable verbose debug output
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->Debugoutput = function($str, $level) {
-                // Capture debug output
-            };
-            
-            // Send the email
-            $result = $mail->send();
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $curlError = curl_error($ch);
+            curl_close($ch);
             
             $raw_error_details = null;
             
-            if ($result) {
+            if ($httpCode === 202) {
+                // 202 Accepted means the email was queued successfully
                 $test_result = '
                 <div class="alert alert-success">
                     <i class="bi bi-check-circle"></i> 
                     <strong>✅ SUCCESS!</strong><br>
-                    <strong>Result:</strong> OAuth2 SMTP configuration is working correctly!<br>
+                    <strong>Result:</strong> OAuth2 configuration is working correctly!<br>
                     <strong>Status:</strong> Test email sent successfully to <code>' . htmlspecialchars($test_email) . '</code><br>
                     <strong>From:</strong> <code>' . htmlspecialchars($from_email) . '</code><br>
-                    <strong>Server:</strong> smtp.office365.com:587 (STARTTLS)<br>
-                    <strong>Authentication:</strong> OAuth2 with Client Credentials Flow<br>
+                    <strong>Method:</strong> Microsoft Graph API<br>
+                    <strong>Endpoint:</strong> graph.microsoft.com/v1.0/users/[user]/sendMail<br>
+                    <strong>Authentication:</strong> OAuth2 Client Credentials Flow<br>
                     <strong>Tenant:</strong> <code>' . htmlspecialchars($tenant_id) . '</code><br>
+                    <strong>HTTP Status:</strong> 202 Accepted<br>
                     <small class="text-muted">✉️ Check your inbox (and spam folder) for the test message.</small>
                 </div>';
+            } else {
+                // Error occurred
+                $errorDetails = json_decode($response, true);
+                $errorMessage = $errorDetails['error']['message'] ?? $response ?? $curlError ?? 'Unknown error';
+                $errorCode = $errorDetails['error']['code'] ?? 'HTTP ' . $httpCode;
+                
+                throw new Exception("Graph API Error [$errorCode]: $errorMessage");
             }
             
         } catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
@@ -399,8 +396,8 @@
                       <h6 class="text-primary mb-2"><i class="bi bi-info-circle"></i> Configuration Summary</h6>
                       <table class="table table-sm table-borderless mb-0" style="font-size: 13px;">
                         <tr><td><strong>Authentication:</strong></td><td><code>OAuth2 Client Credentials</code></td></tr>
-                        <tr><td><strong>SMTP Host:</strong></td><td><code>smtp.office365.com</code></td></tr>
-                        <tr><td><strong>SMTP Port:</strong></td><td><code>587 (STARTTLS)</code></td></tr>
+                        <tr><td><strong>Method:</strong></td><td><code>Microsoft Graph API</code></td></tr>
+                        <tr><td><strong>Endpoint:</strong></td><td><code>graph.microsoft.com/v1.0</code></td></tr>
                         <tr><td><strong>Tenant ID:</strong></td><td><code><?php echo htmlspecialchars($tenant_id); ?></code></td></tr>
                         <tr><td><strong>Client ID:</strong></td><td><code><?php echo htmlspecialchars($client_id); ?></code></td></tr>
                         <tr><td><strong>From Address:</strong></td><td><code><?php echo htmlspecialchars($from_email); ?></code></td></tr>
@@ -423,7 +420,7 @@
           <div class="col-lg-10">
             <div class="card shadow-sm">
               <div class="card-header bg-success text-white">
-                <h4 class="mb-0"><i class="bi bi-book"></i> How to Set Up OAuth2 SMTP for Microsoft 365 Business Standard</h4>
+                <h4 class="mb-0"><i class="bi bi-book"></i> How to Set Up OAuth2 for Microsoft 365 Email Sending</h4>
               </div>
               <div class="card-body p-4">
                 
@@ -431,11 +428,25 @@
                   <i class="bi bi-lightbulb"></i> 
                   <strong>Prerequisites:</strong> You need a Microsoft 365 Business Standard account with a custom domain already added and configured.
                 </div>
+                
+                <div class="alert alert-info mb-4">
+                  <i class="bi bi-info-circle"></i> 
+                  <strong>Why Microsoft Graph API instead of SMTP?</strong><br>
+                  This tool uses <strong>Microsoft Graph API</strong> (not SMTP) because:
+                  <ul class="mb-0 mt-2">
+                    <li>✅ <strong>Officially supported</strong> for client credentials flow (application permissions)</li>
+                    <li>✅ <strong>No user interaction needed</strong> - perfect for automated emails from PHP</li>
+                    <li>✅ <strong>More reliable</strong> - Built-in retry logic and better error handling</li>
+                    <li>✅ <strong>Free</strong> - Included with Microsoft 365 Business Standard</li>
+                    <li>✅ <strong>More features</strong> - Access to folders, categories, read receipts, etc.</li>
+                  </ul>
+                  <small class="text-muted">Note: OAuth2 with SMTP requires user delegation (refresh tokens), which needs user login. Graph API works with application permissions (no user needed).</small>
+                </div>
 
                 <h5 class="mb-3"><i class="bi bi-1-circle-fill text-primary"></i> Install Required PHP Libraries</h5>
-                <p>First, install PHPMailer and OAuth2 libraries using Composer:</p>
+                <p>First, install OAuth2 library using Composer (PHPMailer not needed for Graph API):</p>
                 <div class="bg-dark text-white p-3 rounded mb-4">
-                  <code style="color: #0f0;">composer require phpmailer/phpmailer league/oauth2-client</code>
+                  <code style="color: #0f0;">composer require league/oauth2-client</code>
                 </div>
 
                 <h5 class="mb-3"><i class="bi bi-2-circle-fill text-primary"></i> Register an Application in Microsoft Entra ID (Azure AD)</h5>
@@ -566,12 +577,9 @@
                 <div class="bg-dark text-white p-3 rounded mb-4" style="overflow-x: auto;">
                   <pre style="color: #0f0; margin: 0;"><code>&lt;?php
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\OAuth;
 use League\OAuth2\Client\Provider\GenericProvider;
 
 require 'vendor/autoload.php';
-
-$mail = new PHPMailer(true);
 
 // OAuth2 Provider Configuration
 $provider = new GenericProvider([
@@ -581,52 +589,66 @@ $provider = new GenericProvider([
     'urlAuthorize'    => 'https://login.microsoftonline.com/YOUR_TENANT_ID/oauth2/v2.0/authorize',
     'urlAccessToken'  => 'https://login.microsoftonline.com/YOUR_TENANT_ID/oauth2/v2.0/token',
     'urlResourceOwnerDetails' => '',
-    'scopes'          => 'https://outlook.office365.com/.default'
+    'scopes'          => 'https://graph.microsoft.com/.default'
 ]);
 
-// Get Access Token
+// Get Access Token (valid for ~60 minutes, cache if sending multiple emails)
 $accessToken = $provider->getAccessToken('client_credentials', [
-    'scope' => 'https://outlook.office365.com/.default'
+    'scope' => 'https://graph.microsoft.com/.default'
 ]);
 
-// Configure SMTP
-$mail->isSMTP();
-$mail->Host = 'smtp.office365.com';
-$mail->Port = 587;
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-$mail->SMTPAuth = true;
-$mail->AuthType = 'XOAUTH2';
+// Prepare Email Message
+$emailMessage = [
+    'message' => [
+        'subject' => 'Your Subject Here',
+        'body' => [
+            'contentType' => 'HTML', // or 'Text'
+            'content' => '<p>This email was sent using OAuth2 with Microsoft Graph API!</p>'
+        ],
+        'toRecipients' => [
+            ['emailAddress' => ['address' => 'recipient@example.com']]
+        ]
+    ],
+    'saveToSentItems' => 'true'
+];
 
-// Set OAuth2
-$mail->setOAuth(new OAuth([
-    'provider' => $provider,
-    'clientId' => 'YOUR_CLIENT_ID',
-    'clientSecret' => 'YOUR_CLIENT_SECRET',
-    'refreshToken' => '',
-    'userName' => 'yourname@glitchwizardsolutions.com',
-    'accessToken' => $accessToken->getToken()
-]));
+// Send via Microsoft Graph API
+$fromEmail = 'yourname@glitchwizardsolutions.com';
+$graphUrl = "https://graph.microsoft.com/v1.0/users/$fromEmail/sendMail";
 
-// Email Details
-$mail->setFrom('yourname@glitchwizardsolutions.com', 'Your Name');
-$mail->addAddress('recipient@example.com');
-$mail->Subject = 'Test Email';
-$mail->Body = 'This email was sent using OAuth2!';
+$ch = curl_init($graphUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($emailMessage));
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Authorization: Bearer ' . $accessToken->getToken(),
+    'Content-Type: application/json'
+]);
 
-// Send
-$mail->send();
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+
+if ($httpCode === 202) {
+    echo "Email sent successfully!";
+} else {
+    $error = json_decode($response, true);
+    echo "Error: " . ($error['error']['message'] ?? 'Unknown error');
+}
 ?&gt;</code></pre>
                 </div>
 
                 <div class="alert alert-success mb-0">
                   <i class="bi bi-check-circle"></i> 
-                  <strong>Benefits of OAuth2:</strong>
+                  <strong>Benefits of OAuth2 with Microsoft Graph API:</strong>
                   <ul class="mb-0 mt-2">
                     <li>✅ No passwords stored in your code</li>
-                    <li>✅ Future-proof (won't be deprecated like basic auth)</li>
+                    <li>✅ No user interaction needed (client credentials flow)</li>
+                    <li>✅ Future-proof (Microsoft's recommended approach)</li>
                     <li>✅ More secure with token-based authentication</li>
-                    <li>✅ Works with external web applications using your domain emails</li>
-                    <li>✅ Granular permissions control</li>
+                    <li>✅ Works from any server/hosting (no SMTP port restrictions)</li>
+                    <li>✅ Access to advanced features (attachments, importance, categories, etc.)</li>
+                    <li>✅ Better error handling and delivery tracking</li>
                   </ul>
                 </div>
 
