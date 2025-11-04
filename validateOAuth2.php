@@ -85,8 +85,12 @@
     $dependency_error = '';
     
     if (file_exists('vendor/autoload.php')) {
-        require 'vendor/autoload.php';
-        $dependencies_installed = true;
+        try {
+            require 'vendor/autoload.php';
+            $dependencies_installed = true;
+        } catch (Error $e) {
+            $dependency_error = 'Composer dependencies are incomplete or corrupted. Error: ' . htmlspecialchars($e->getMessage()) . '<br><br>Please run: <code>composer install</code> or manually upload the vendor folder.';
+        }
     } else {
         $dependency_error = 'Composer dependencies not installed. Please run: <code>composer require phpmailer/phpmailer league/oauth2-client</code>';
     }
