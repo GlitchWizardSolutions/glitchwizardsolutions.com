@@ -10,9 +10,7 @@ require_once('../vendor/autoload.php');
 
 use League\OAuth2\Client\Provider\GenericProvider;
 
-// Set JSON response header
-header('Content-Type: application/json');
-
+// Validate form inputs
 try {
     // Validate form inputs
     if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
@@ -92,7 +90,14 @@ try {
     ];
     
     // Send admin email
-    $result1 = sendGraphEmail($adminEmailMessage, $accessToken->getToken(), smtp_from_email);
+    error_log("Attempting to send admin email to: " . support_email);
+    try {
+        $result1 = sendGraphEmail($adminEmailMessage, $accessToken->getToken(), smtp_from_email);
+        error_log("Admin email sent successfully");
+    } catch (Exception $e) {
+        error_log("Admin email failed: " . $e->getMessage());
+        throw $e; // Re-throw to catch in main try block
+    }
     
     // --- EMAIL 2: Send Confirmation to User ---
     $userEmailMessage = [
@@ -154,21 +159,21 @@ try {
     ];
     
     // Send user confirmation email
-    $result2 = sendGraphEmail($userEmailMessage, $accessToken->getToken(), smtp_from_email);
+    error_log("Attempting to send confirmation email to: " . $email);
+    try {
+        $result2 = sendGraphEmail($userEmailMessage, $accessToken->getToken(), smtp_from_email);
+        error_log("Confirmation email sent successfully");
+    } catch (Exception $e) {
+        error_log("Confirmation email failed: " . $e->getMessage());
+        // Don't throw - admin email already sent, just log the error
+    }
     
-    // Return success response
-    echo json_encode([
-        'status' => 'success',
-        'message' => 'Your message has been sent successfully! Check your email for confirmation.'
-    ]);
+    // Return success response in format expected by validate.js
+    echo "OK";
     
 } catch (Exception $e) {
     error_log("Contact Form Error: " . $e->getMessage());
-    http_response_code(500);
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'Sorry, there was an error sending your message. Please try again later or email us directly at ' . support_email
-    ]);
+    echo "Error: " . $e->getMessage();
 }
 
 /**
