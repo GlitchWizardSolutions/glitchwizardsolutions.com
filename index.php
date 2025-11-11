@@ -267,7 +267,7 @@
               <h4 class='title'>Start with <br>an MVP Website!</h4>
               <p class='description'><a href='https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/'>Book a Consultation</a> &amp; tell me all about what makes your business unique!</p>
               <br>
-              <p class='description'>Then check your email for a link to fill out some forms, upload your content &amp; book your build!</p><br>
+              <p class='description'>Then check your email for a information and links, upload your content &amp; we will schedule your build (or you can "book your build" for a VIP experience!)</p><br>
               <p class='description'>Get ready for your on-brand, fully functional, foundational website, that focuses on providing what your ideal customer needs, and of course, a clear and easy path to how they can get it!</p>
               <br><br><!-- I'll ask you what your ideal customer is like, how you meet their needs, and how you want the customer to reach you. We will also discuss what to expect during the build process.-->
             </div>
