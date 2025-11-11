@@ -338,6 +338,14 @@
             </div>
             
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <!-- Honeypot field - hidden from real users but visible to bots -->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="website" tabindex="-1" autocomplete="off" placeholder="Leave this field blank">
+              </div>
+              
+              <!-- Timestamp to prevent instant bot submissions -->
+              <input type="hidden" name="form_timestamp" id="form_timestamp" value="">
+              
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -360,6 +368,19 @@
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" rows="8" placeholder="Tell me about your project and goals..." required></textarea>
               </div>
+              
+              <!-- Security Acknowledgment Checkbox -->
+              <div class="form-group mt-3">
+                <div class="form-check" style="padding-left: 0;">
+                  <label class="form-check-label" style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" class="form-check-input" name="security_acknowledgment" id="security_acknowledgment" required style="margin-top: 4px; cursor: pointer; width: 18px; height: 18px; flex-shrink: 0;">
+                    <span style="color: #555; font-size: 14px; line-height: 1.5;">
+                      I acknowledge that my submission will be screened for security purposes to protect against spam and automated bots. This helps us respond faster to genuine inquiries.
+                    </span>
+                  </label>
+                </div>
+              </div>
+              
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
@@ -530,6 +551,13 @@
 
   <!-- Template Main JS File -->
   <script src='assets/js/main.js'></script>
+  
+  <!-- Spam Protection: Set form timestamp when page loads -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('form_timestamp').value = Date.now();
+    });
+  </script>
    
 </body>
 
