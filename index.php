@@ -61,6 +61,9 @@
 <meta property="og:image:alt"               content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
 <meta property="og:locale"                  content="en_US">
 <meta property="og:site_name"               content="GlitchWizard Solutions">
+<meta property="article:published_time"     content="2022-01-20T00:00:00+00:00">
+<meta property="article:modified_time"      content="2025-11-11T00:00:00+00:00">
+<meta property="article:author"             content="Barbara Moore">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card"                   content="summary_large_image">
