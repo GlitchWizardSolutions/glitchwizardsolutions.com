@@ -52,16 +52,20 @@
 <meta property="og:url"                     content="https://glitchwizardsolutions.com">
 <meta property="og:type"                    content="website">
 <meta property="og:title"                   content="Websites that Grow with Your Business Goals">
-<meta property="og:description"             content="From your initial footprint through your digital marketing!">
-<meta property="og:image"                   content="https://opengraph.b-cdn.net/production/documents/69082e8d-1685-4571-9a61-bf5fa64b8701.png?token=fjpXw4-u7ktYYI4e0nFiehM915Dj5reAK5fX0LgnFzs&amp;eight=620&amp;width=1200&amp;expires=33242294811">
+<meta property="og:description"             content="From your initial footprint through your digital marketing, we build search engine authority organically. Digital foundations to build your small business in affordable stages.">
+<meta property="og:image"                   content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+<meta property="og:image:width"             content="1200">
+<meta property="og:image:height"            content="630">
+<meta property="og:image:alt"               content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card"                   content="summary_large_image">
 <meta property="twitter:domain"             content="glitchwizardsolutions.com">
 <meta property="twitter:url"                content="https://glitchwizardsolutions.com">
 <meta name="twitter:title"                  content="Websites that Grow with Your Business Goals">
-<meta name="twitter:description"            content="From your initial footprint through your digital marketing!">
-<meta name="twitter:image"                  content="https://opengraph.b-cdn.net/production/documents/69082e8d-1685-4571-9a61-bf5fa64b8701.png?token=fjpXw4-u7ktYYI4e0nFiehM915Dj5reAK5fX0LgnFzs&amp;height=620&amp;width=1200&amp;expires=33242294811">
+<meta name="twitter:description"            content="From your initial footprint through your digital marketing, we build search engine authority organically. Digital foundations to build your small business in affordable stages.">
+<meta name="twitter:image"                  content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+<meta name="twitter:image:alt"              content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
 
 <!-- Meta Tags Generated via https://www.opengraph.xyz -->
   

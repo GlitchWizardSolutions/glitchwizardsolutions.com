@@ -19,8 +19,26 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Message Me - GlitchWizard Solutions - Digital Foundations to Build Your Small Business in Affordable Stages</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="Contact GlitchWizard Solutions for website development, custom web applications, and digital marketing services. Get started with affordable website packages from $1,500." name="description">
+  <meta content="contact glitchwizard solutions, website development contact, web design inquiry, small business website" name="keywords">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://glitchwizardsolutions.com/message-me.php">
+  <meta property="og:title" content="Contact GlitchWizard Solutions - Website Development Services">
+  <meta property="og:description" content="Get started with professional website development from $1,500. Contact us for MVP websites, custom applications, and digital marketing.">
+  <meta property="og:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://glitchwizardsolutions.com/message-me.php">
+  <meta name="twitter:title" content="Contact GlitchWizard Solutions - Website Development Services">
+  <meta name="twitter:description" content="Get started with professional website development from $1,500. Contact us for MVP websites, custom applications, and digital marketing.">
+  <meta name="twitter:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+  <meta name="twitter:image:alt" content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
