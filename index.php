@@ -53,10 +53,14 @@
 <meta property="og:type"                    content="website">
 <meta property="og:title"                   content="Websites that Grow with Your Business Goals">
 <meta property="og:description"             content="From your initial footprint through your digital marketing, we build search engine authority organically. Digital foundations to build your small business in affordable stages.">
-<meta property="og:image"                   content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+<meta property="og:image"                   content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
+<meta property="og:image:secure_url"        content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
+<meta property="og:image:type"              content="image/jpeg">
 <meta property="og:image:width"             content="1200">
 <meta property="og:image:height"            content="630">
 <meta property="og:image:alt"               content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
+<meta property="og:locale"                  content="en_US">
+<meta property="og:site_name"               content="GlitchWizard Solutions">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card"                   content="summary_large_image">
@@ -64,7 +68,7 @@
 <meta property="twitter:url"                content="https://glitchwizardsolutions.com">
 <meta name="twitter:title"                  content="Websites that Grow with Your Business Goals">
 <meta name="twitter:description"            content="From your initial footprint through your digital marketing, we build search engine authority organically. Digital foundations to build your small business in affordable stages.">
-<meta name="twitter:image"                  content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+<meta name="twitter:image"                  content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
 <meta name="twitter:image:alt"              content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
 
 <!-- Meta Tags Generated via https://www.opengraph.xyz -->

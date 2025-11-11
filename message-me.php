@@ -27,17 +27,21 @@
   <meta property="og:url" content="https://glitchwizardsolutions.com/message-me.php">
   <meta property="og:title" content="Contact GlitchWizard Solutions - Website Development Services">
   <meta property="og:description" content="Get started with professional website development from $1,500. Contact us for MVP websites, custom applications, and digital marketing.">
-  <meta property="og:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+  <meta property="og:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
+  <meta property="og:image:secure_url" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="GlitchWizard Solutions">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://glitchwizardsolutions.com/message-me.php">
   <meta name="twitter:title" content="Contact GlitchWizard Solutions - Website Development Services">
   <meta name="twitter:description" content="Get started with professional website development from $1,500. Contact us for MVP websites, custom applications, and digital marketing.">
-  <meta name="twitter:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.png">
+  <meta name="twitter:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
   <meta name="twitter:image:alt" content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
 
   <!-- Favicons -->
