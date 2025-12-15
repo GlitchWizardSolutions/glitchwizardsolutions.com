@@ -332,6 +332,8 @@
                   <option value="webdev@glitchwizardsolutions.com" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'webdev@glitchwizardsolutions.com') ? 'selected' : ''; ?>>webdev@glitchwizardsolutions.com</option>
                   <option value="DoNotReply@glitchwizardsolutions.com" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'DoNotReply@glitchwizardsolutions.com') ? 'selected' : ''; ?>>DoNotReply@glitchwizardsolutions.com</option>
                   <option value="admin@glitchwizard.website" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'admin@glitchwizard.website') ? 'selected' : ''; ?>>admin@glitchwizard.website</option>
+                  <option value="bobby.griffin@duvalbulldog-photos.com" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'bobby.griffin@duvalbulldog-photos.com') ? 'selected' : ''; ?>>bobby.griffin@duvalbulldog-photos.com</option>
+                  <option value="duvalbulldogphotos@gmail.com" <?php echo (isset($_POST['from_email']) && $_POST['from_email'] == 'duvalbulldogphotos@gmail.com') ? 'selected' : ''; ?>>duvalbulldogphotos@gmail.com</option>
                 </select>
                 <small class="form-text text-muted">This should typically match your SMTP username or be from the same domain</small>
               </div>
