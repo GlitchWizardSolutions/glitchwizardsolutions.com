@@ -14,6 +14,8 @@
   gtag('js', new Date());
   gtag('config', 'G-4LP6TJ8YK9');
 </script>
+ 
+<script nowprocket nitro-exclude type="text/javascript" id="sa-dynamic-optimization" data-uuid="3b23040d-c48b-45fe-a077-a1a652e8a056" src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gIjNiMjMwNDBkLWM0OGItNDVmZS1hMDc3LWExYTY1MmU4YTA1NiI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="></script>
   <meta name="facebook-domain-verification" content="fpcyydpdg5m5yialz8bb2fe7g1lhve" />
   <meta charset='UTF-8'>
   <meta http-equiv='Content-Type'           content='text/html; charset=utf-8'>
