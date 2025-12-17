@@ -219,16 +219,21 @@
     <div class='container footer-bottom clearfix'>
       <div>
         <div style='float:left;'>
-          <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
-            <img src='assets/img/badges/Light.png' style='width:90px; height:auto;' alt='Termageddon Privacy Policy Badge'>
-          </a>
-          <div class='copyright' style='display:inline; margin-left:10px;'>
+          <div class='copyright' style='display:inline;'>
             <a href='terms.php'>Terms</a> &nbsp; | &nbsp;
             <a href='accessibility.php'>Accessibility</a> &nbsp; | &nbsp;
             <a href='privacy.php'>Privacy</a> &nbsp; | &nbsp;
             <a href='javascript:UC_UI.showSecondLayer();' id='usercentrics-psl'>Settings</a> &nbsp; | &nbsp;
             <a href="https://glitchwizarddigitalsolutions.com">Portal</a>
           </div>
+        </div>
+        <div style='text-align:center; margin:0 auto;'>
+          <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
+            <img src='assets/img/badges/Light.png' style='width:90px; height:auto; margin-right:10px;' alt='Termageddon Privacy Policy Badge'>
+          </a>
+          <a target="_blank" href='https://certificates.usidhr.org/6f94c33d-896b-4fd4-a3ef-280193df6726#acc.bOLXBi2Q'>
+            <img style='width:90px; height:auto;' src='assets/img/badges/HumanRightsBadge2025.png' alt='Human Rights Certificate 2025'>
+          </a>
         </div>
         <div class='credits' style='float:right; font-size:16px;'>
           &copy; 2022-<script type='text/JavaScript'>document.write(new Date().getFullYear());</script>&nbsp; GlitchWizard Solutions. All Rights Reserved.
