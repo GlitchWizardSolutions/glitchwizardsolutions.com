@@ -113,6 +113,15 @@
     }
     window.addEventListener('load', toggleBacktotop)
     onscroll(document, toggleBacktotop)
+    
+    // Keyboard support for back-to-top button
+    on('click', '.back-to-top', function(e) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+      e.preventDefault()
+    })
   }
 
   /**
@@ -120,8 +129,18 @@
    */
   on('click', '.mobile-nav-toggle', function(e) {
     select('#navbar').classList.toggle('navbar-mobile')
+    const isExpanded = select('#navbar').classList.contains('navbar-mobile')
+    this.setAttribute('aria-expanded', isExpanded ? 'true' : 'false')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
+  })
+
+  // Keyboard support for mobile nav toggle (Enter/Space keys)
+  on('keydown', '.mobile-nav-toggle', function(e) {
+    if (e.key === 'Enter' || e.code === 'Space') {
+      e.preventDefault()
+      this.click()
+    }
   })
 
   /**

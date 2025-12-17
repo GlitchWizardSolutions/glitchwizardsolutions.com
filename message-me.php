@@ -5,7 +5,7 @@
     <link rel="preconnect" href="//privacy-proxy.usercentrics.eu">
 <link rel="preload" href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js" as="script">
 <script type="application/javascript" src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"></script>
-<script id="usercentrics-cmp" src="https://app.usercentrics.eu/browser-ui/latest/loader.js" data-settings-id="0lPnZOGfCQYkBt"  async></script>
+<script id="usercentrics-cmp" src="https://app.usercentrics.eu/browser-ui/latest/loader.js" data-settings-id="0lPnZOGfCQYkBt" defer></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LP6TJ8YK9"></script>
 <script>
@@ -18,9 +18,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Message Me - GlitchWizard Solutions - Digital Foundations to Build Your Small Business in Affordable Stages</title>
+  <title>Contact GlitchWizard Solutions | Affordable Website Development Services</title>
   <meta content="Contact GlitchWizard Solutions for website development, custom web applications, and digital marketing services. Get started with affordable website packages from $1,500." name="description">
-  <meta content="contact glitchwizard solutions, website development contact, web design inquiry, small business website" name="keywords">
+  <meta content="contact glitchwizard, website design inquiry, web development contact, custom web applications, digital marketing services, affordable website design, small business websites, MVP website, website development packages, professional web design, responsive website, web application development, contact form, consultation request" name="keywords">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -35,6 +35,9 @@
   <meta property="og:image:alt" content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="GlitchWizard Solutions">
+  
+  <!-- Canonical URL for SEO -->
+  <link rel="canonical" href="https://glitchwizardsolutions.com/message-me.php">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -49,7 +52,7 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +69,33 @@
   * Updated: October 30 2025 with Bootstrap v5.3.0
   ======================================================== -->
   <!-- GlitchWizard Solutions Accessibility CSS -->
-  <link href="https://glitchwizardsolutions.com/universal/accessibility.css" rel="stylesheet">
+  <link href="universal/accessibility.css" rel="stylesheet">
+  
+  <!-- Schema.org Structured Data for Contact Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact GlitchWizard Solutions",
+    "url": "https://glitchwizardsolutions.com/message-me.php",
+    "description": "Get in touch with GlitchWizard Solutions for professional website development and digital services.",
+    "organization": {
+      "@type": "Organization",
+      "name": "GlitchWizard Solutions",
+      "url": "https://glitchwizardsolutions.com",
+      "logo": "https://glitchwizardsolutions.com/assets/img/favicon.png",
+      "sameAs": [
+        "https://www.facebook.com/glitchwizardsolutions",
+        "https://www.linkedin.com/company/glitchwizard-solutions"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Sales",
+        "availableLanguage": ["en"]
+      }
+    }
+  }
+  </script>
   
   <!-- Custom CSS for Services Pricing -->
   <style>
@@ -81,11 +110,31 @@
     top: 20px;
   }
 
-  .services-pricing h4 {
-    color: #673AB7;
+  .services-pricing h3 {
+    color: #4a2c6b;
     font-weight: 600;
-    border-bottom: 2px solid #673AB7;
+    border-bottom: 2px solid #000;
     padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .services-pricing h4 {
+    color: #4a2c6b;
+    font-weight: 600;
+    border-bottom: 2px solid #4a2c6b;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .service-card h4 {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+.webmaster-services h3 {
+          color: white !important;
+          border-bottom: 2px solid white !important;
   }
 
   .service-card {
@@ -331,16 +380,16 @@
       <h1 class='logo'>GlitchWizard Solutions</h1>
        
 
-      <nav id='navbar' class='navbar order-last order-lg-0'>
+      <nav id='navbar' class='navbar order-last order-lg-0' role="navigation" aria-label="Main navigation">
          
 
-        <ul>
-          <li><a class='nav-link scrollto active' href='https://glitchwizardsolutions.com/#hero'>Home</a></li>
-          <li><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/#services'>Services</a></li>
-          <li><a class='nav-link scrollto' href='https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/'>Booking</a></li>
-          <li><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/message-me.php'>Contact</a></li>
+        <ul role="menubar">
+          <li role="none"><a class='nav-link scrollto active' href='https://glitchwizardsolutions.com/#hero' role="menuitem">Home</a></li>
+          <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/#services' role="menuitem">Services</a></li>
+          <li role="none"><a class='nav-link scrollto' href='https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/' role="menuitem">Booking</a></li>
+          <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/message-me.php' role="menuitem">Contact</a></li>
         </ul>
-        <i class='bi bi-list mobile-nav-toggle'></i>
+        <i class='bi bi-list mobile-nav-toggle' role="button" tabindex="0" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="navbar"></i>
       </nav><!-- .navbar -->
 
     </div>
@@ -359,7 +408,7 @@
               <p>Ready to get started on your website project? Send me a message and I'll get back to you soon!</p>
             </div>
             
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form" novalidate>
               <!-- Honeypot field - hidden from real users but visible to bots -->
               <div style="position: absolute; left: -5000px;" aria-hidden="true">
                 <input type="text" name="website" tabindex="-1" autocomplete="off" placeholder="Leave this field blank">
@@ -370,15 +419,22 @@
               
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <label for="name">Your Name <span aria-label="required">*</span></label>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="John Smith" required aria-required="true">
+                 
+                  
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  <label for="email">Your Email <span aria-label="required">*</span></label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="john@example.com" required aria-required="true">
+                 
+                  
                 </div>
               </div>
               <div class="form-group mt-3">
-                <select name="subject" class="form-control" id="subject" required>
-                  <option value="">Select Service Interest</option>
+                <label for="subject">Service Interest <span aria-label="required">*</span></label>
+                <select name="subject" class="form-control" id="subject" required aria-required="true">
+                  <option value="">Select One</option>
                   <option value="MVP Website">MVP Website ($1,500)</option>
                   <option value="Foundational Website">Foundational Website ($3,500)</option>
                   <option value="Expanded Website">Expanded Website ($5,500)</option>
@@ -388,27 +444,29 @@
                 </select>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="8" placeholder="Tell me about your project and goals..." required></textarea>
+                <label for="message">Project Details <span aria-label="required">*</span></label>
+                <textarea class="form-control" name="message" id="message" rows="8" placeholder="Tell me about your project and goals..." required aria-required="true"></textarea>
+              
               </div>
               
               <!-- Security Acknowledgment Checkbox -->
               <div class="form-group mt-3">
                 <div class="form-check" style="padding-left: 0;">
-                  <label class="form-check-label" style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
-                    <input type="checkbox" class="form-check-input" name="security_acknowledgment" id="security_acknowledgment" required style="margin-top: 4px; cursor: pointer; width: 18px; height: 18px; flex-shrink: 0;">
-                    <span style="color: #555; font-size: 14px; line-height: 1.5;">
-                      I acknowledge that my submission will be screened for security purposes to protect against spam and automated bots. This helps us respond faster to genuine inquiries.
+                  <input type="checkbox" class="form-check-input" name="security_acknowledgment" id="security_acknowledgment" required style="width: 24px; height: 24px; margin-top: 2px; cursor: pointer; flex-shrink: 0; accent-color: #4a2c6b; border: 4px solid #4a2c6b;" aria-required="true">
+                  <label class="form-check-label" for="security_acknowledgment" style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; margin-bottom: 0;">
+                    <span style="color: #333333; font-size: 15px; line-height: 1.6; font-weight: 500;">
+                      I acknowledge that my submission will be screened for security purposes to protect against spam and automated bots. This helps us respond faster to genuine inquiries. <span aria-label="required" style="color: #e63946;">*</span>
                     </span>
                   </label>
                 </div>
               </div>
               
               <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="loading" role="status" aria-live="polite" aria-hidden="true">Loading</div>
+                <div class="error-message" role="alert" aria-live="assertive" aria-hidden="true" tabindex="-1"></div>
+                <div class="sent-message" role="status" aria-live="polite" aria-hidden="true" tabindex="-1">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit" aria-label="Send contact form message">Send Message</button></div>
             </form>
 
           </div>
@@ -416,12 +474,12 @@
           <!-- ======= Services Pricing Column ======= -->
           <div class="col-lg-4">
             <div class="services-pricing">
-              <h4 class="mb-4">Website Development</h4>
+              <h3 class="mb-4">Website Development</h3>
               
               <!-- MVP Website -->
               <div class="service-card mb-4">
                 <div class="service-header">
-                  <h5 class="service-name">MVP Branded Website</h5>
+                  <h4 class="service-name">MVP Branded Website</h4>
                   <span class="service-price">$1,500</span>
                 </div>
                 <div class="service-description">
@@ -437,7 +495,7 @@
               <!-- Foundational Website -->
               <div class="service-card mb-4">
                 <div class="service-header">
-                  <h5 class="service-name">Small Business Foundational Website</h5>
+                  <h4 class="service-name">Small Business Foundational</h4>
                   <span class="service-price">$3,500</span>
                 </div>
                 <div class="service-description">
@@ -454,7 +512,7 @@
               <!-- Expanded Website -->
               <div class="service-card mb-4">
                 <div class="service-header">
-                  <h5 class="service-name">Small Business Expanded Website</h5>
+                  <h4 class="service-name">Small Business Expanded</h4>
                   <span class="service-price">$5,500</span>
                 </div>
                 <div class="service-description">
@@ -471,7 +529,7 @@
 
               <!-- Webmaster Services -->
               <div class="webmaster-services">
-                <h5 class="mb-3">Webmaster Services</h5>
+                <h3 class="mb-3">Webmaster Services</h3>
                 
                 <div class="webmaster-option">
                   <div class="webmaster-header">
@@ -533,23 +591,61 @@
             <h4>We're looking forward to introducing your business to the people who are actively looking for your services!</h4>
  </div>
 </div>
+
+<!-- Certifications & Badges Section - TEMPORARILY COMMENTED OUT -->
+<!-- 
 <div class='row justify-content-center'>
-<div class='col-lg-12' style='margin:20px'>
-<a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php'><img src='assets/img/badges/Light.png' style='width:250px' alt='privacy badge'></a>
-&nbsp;
-<a target="_blank" href='https://certificates.usidhr.org/6f94c33d-896b-4fd4-a3ef-280193df6726#acc.bOLXBi2Q'><img style='width:200px' src='assets/img/badges/HumanRightsBadge2025.png' alt='privacy badge'></a>
+<div class='col-lg-12' style='margin:20px 20px 5px 20px'>
+  <h5 style='text-align:center; margin-bottom:15px; color:#4a2c6b;'>Professional Certifications & Achievements</h5>
+  <div style='display:flex; flex-wrap:wrap; justify-content:center; gap:15px; align-items:center;'>
+    <!-- edX Certificate 1 -->
+    <div style='text-align:center;'>
+      <a target="_blank" href='https://courses.edx.org/certificates/9802695869264fc0b953ade347415557' title='edX Verified Certificate - March 5, 2023'>
+        <div style='background:#f0f0f0; padding:10px; border-radius:8px; width:120px;'>
+          <div style='font-size:12px; font-weight:bold; color:#4a2c6b;'>edX</div>
+          <div style='font-size:10px; color:#666; margin-top:5px;'>Verified Certificate</div>
+          <div style='font-size:9px; color:#999; margin-top:3px;'>Mar 5, 2023</div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- edX Certificate 2 -->
+    <div style='text-align:center;'>
+      <a target="_blank" href='https://courses.edx.org/certificates/ee11b61782ea445b8b95e2b87c425900' title='edX Verified Certificate - March 3, 2023'>
+        <div style='background:#f0f0f0; padding:10px; border-radius:8px; width:120px;'>
+          <div style='font-size:12px; font-weight:bold; color:#4a2c6b;'>edX</div>
+          <div style='font-size:10px; color:#666; margin-top:5px;'>Verified Certificate</div>
+          <div style='font-size:9px; color:#999; margin-top:3px;'>Mar 3, 2023</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Human Rights Badge -->
+    <div style='text-align:center;'>
+      <a target="_blank" href='https://certificates.usidhr.org/6f94c33d-896b-4fd4-a3ef-280193df6726#acc.bOLXBi2Q'>
+        <img style='width:100px; height:auto;' src='assets/img/badges/HumanRightsBadge2025.png' alt='Human Rights Certificate 2025'>
+      </a>
+    </div>
+  </div>
 </div> 
 </div>
+-->
+
 </div>
 </div>
 </div>
     <div class='container footer-bottom clearfix'>
-      <div class='copyright'>
-  
-        <a href='terms.php'>Terms of Service</a> &nbsp; 
-        <a href='accessibility.php'>Accessibility Policy</a>  &nbsp; 
-        <a href='privacy.php'>Privacy Policy</a>  &nbsp; 
-        <a href='javascript:UC_UI.showSecondLayer();' id='usercentrics-psl'>Privacy Settings</a>
+      <div style='display:flex; align-items:center; gap:15px; margin-bottom:15px;'>
+        <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
+          <img src='assets/img/badges/Light.png' style='width:100px; height:auto;' alt='Termageddon Privacy Policy Badge'>
+        </a>
+        <div class='copyright' style='margin:0;'>
+          <a href='terms.php'>Terms </a> &nbsp; 
+          <a href='accessibility.php'> Accessibility </a>  &nbsp; 
+          <a href='privacy.php'> Privacy</a>  &nbsp; 
+          <a href='javascript:UC_UI.showSecondLayer();' id='usercentrics-psl'> Settings &nbsp; </a>
+          <a href="https://glitchwizarddigitalsolutions.com">  &nbsp; Member Portal</a>
+        </div>
       </div>
       <div class='credits'>
         &copy; 2022-<script type='text/JavaScript'>document.write(new Date().getFullYear());</script>&nbsp; GlitchWizard Solutions LLC. All Rights Reserved
