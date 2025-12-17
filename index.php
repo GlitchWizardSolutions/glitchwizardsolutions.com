@@ -108,6 +108,71 @@
   ======================================================== -->
   <!-- GlitchWizard Solutions Accessibility CSS -->
   <link href='https://glitchwizardsolutions.com/universal/accessibility.css' rel='stylesheet'>
+
+  <!-- Footer responsive layout -->
+  <style>
+    .footer-bottom {
+      padding: 20px 0 !important;
+    }
+
+    .footer-bottom > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-bottom > div > div:nth-child(1) {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-bottom > div > div:nth-child(2) {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .footer-bottom > div > div:nth-child(3) {
+      flex: 1;
+      text-align: right;
+      min-width: 200px;
+    }
+
+    .footer-bottom img {
+      flex-shrink: 0;
+    }
+
+    .footer-bottom .copyright {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-bottom .credits {
+      font-size: 16px;
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (max-width: 768px) {
+      .footer-bottom > div {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-bottom > div > div:nth-child(1),
+      .footer-bottom > div > div:nth-child(3) {
+        text-align: center;
+        width: 100%;
+      }
+
+      .footer-bottom > div > div:nth-child(3) {
+        margin-top: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -340,20 +405,22 @@
 </div>
 </div>
     <div class='container footer-bottom clearfix'>
-      <div style='display:flex; align-items:center; gap:15px; margin-bottom:15px;'>
-        <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
-          <img src='assets/img/badges/Light.png' style='width:100px; height:auto;' alt='Termageddon Privacy Policy Badge'>
-        </a>
-        <div class='copyright' style='margin:0;'>
-          <a href='terms.php'>Terms </a> &nbsp; 
-          <a href='accessibility.php'> Accessibility </a>  &nbsp; 
-          <a href='privacy.php'> Privacy</a>  &nbsp; 
-          <a href='javascript:UC_UI.showSecondLayer();' id='usercentrics-psl'> Settings &nbsp; </a>
-          <a href="https://glitchwizarddigitalsolutions.com">  &nbsp; Member Portal</a>
+      <div>
+        <div style='float:left;'>
+          <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
+            <img src='assets/img/badges/Light.png' style='width:90px; height:auto;' alt='Termageddon Privacy Policy Badge'>
+          </a>
+          <div class='copyright' style='display:inline; margin-left:10px;'>
+            <a href='terms.php'>Terms</a> &nbsp; | &nbsp;
+            <a href='accessibility.php'>Accessibility</a> &nbsp; | &nbsp;
+            <a href='privacy.php'>Privacy</a> &nbsp; | &nbsp;
+            <a href='javascript:UC_UI.showSecondLayer();' id='usercentrics-psl'>Settings</a> &nbsp; | &nbsp;
+            <a href="https://glitchwizarddigitalsolutions.com">Portal</a>
+          </div>
         </div>
-      </div>
-      <div class='credits'>
-        &copy; 2022-<script type='text/JavaScript'>document.write(new Date().getFullYear());</script>&nbsp; GlitchWizard Solutions LLC. All Rights Reserved
+        <div class='credits' style='float:right; font-size:16px;'>
+          &copy; 2022-<script type='text/JavaScript'>document.write(new Date().getFullYear());</script>&nbsp; GlitchWizard Solutions. All Rights Reserved.
+        </div>
       </div>
     </div>
   </footer><!-- End Footer -->
