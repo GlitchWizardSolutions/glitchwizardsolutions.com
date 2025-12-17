@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+  <title>Privacy Policy - GlitchWizard Solutions - Digital Foundations to Build Your Small Business in Affordable Stages</title>
+<link rel='preconnect' href='//privacy-proxy.usercentrics.eu'>
+<link rel='preload' href='//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js' as='script'>
+<script type='application/javascript' src='https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js'></script>
+<script id='usercentrics-cmp' src='https://app.usercentrics.eu/browser-ui/latest/loader.js' data-settings-id='0lPnZOGfCQYkBt' defer></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LP6TJ8YK9"></script>
 <script>
@@ -160,8 +165,8 @@
     </div>
 
    <div class='container footer-bottom clearfix'>
-      <div style='display:block;'>
-        <div style='float:left;'>
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+        <div>
           <div class='copyright' style='display:inline;'>
             <a href='terms.php'>Terms</a> &nbsp; | &nbsp;
             <a href='accessibility.php'>Accessibility</a> &nbsp; | &nbsp;
@@ -170,7 +175,7 @@
             <a href="https://glitchwizarddigitalsolutions.com">Portal</a>
           </div>
         </div>
-        <div style='text-align:center; margin:0 auto;'>
+        <div style='text-align:center; flex-shrink: 0;'>
           <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
             <img src='assets/img/badges/Light.png' style='width:90px; height:auto; margin-right:10px;' alt='Termageddon Privacy Policy Badge'>
           </a>
@@ -178,7 +183,7 @@
             <img style='width:90px; height:auto;' src='assets/img/badges/HumanRightsBadge2025.png' alt='Human Rights Certificate 2025'>
           </a>
         </div>
-        <div class='credits' style='float:right; font-size:16px;'>
+        <div class='credits' style='font-size:16px;'>
           &copy; 2022-<script type='text/JavaScript'>document.write(new Date().getFullYear());</script>&nbsp; GlitchWizard Solutions. All Rights Reserved.
         </div>
       </div>

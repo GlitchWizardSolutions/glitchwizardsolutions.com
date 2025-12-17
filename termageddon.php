@@ -41,22 +41,19 @@
 
 <body>
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center ">
-    <div class="container-fluid d-flex align-items-center justify-content-lg-between">
+  <header id='header' class='d-flex align-items-center '>
+    <div class='container-fluid d-flex align-items-center justify-content-lg-between'>
 
-      <h1 class="logo me-auto me-lg-0"><a href="https://glitchwizardsolutions.com/index.html">GlitchWizard Solutions</a></h1>
-       
-    
+      <h1 class='logo'>GlitchWizard Solutions</h1>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-         
-
-        <ul>
-          <li><a class="nav-link scrollto active" href="https://glitchwizardsolutions.com/#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="https://glitchwizardsolutions.com/#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/">Contact</a></li>
+      <nav id='navbar' class='navbar order-last order-lg-0' role="navigation" aria-label="Main navigation">
+        <ul role="menubar">
+          <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/#hero' role="menuitem">Home</a></li>
+          <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/#services' role="menuitem">Services</a></li>
+          <li role="none"><a class='nav-link scrollto' href='https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/' role="menuitem">Booking</a></li>
+          <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/message-me.php' role="menuitem">Contact</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class='bi bi-list mobile-nav-toggle' role="button" tabindex="0" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="navbar"></i>
       </nav><!-- .navbar -->
 
     </div>
@@ -70,7 +67,7 @@
 
         <div class="row content">
           <div class="col-lg-12">
-               <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>January 1st '24</span></div>
+ 
          
               <h1 class="mb-5">Importance of the Privacy Policy on your Website.</h1>
               <p>Amidst the excitement of building a business, and letting the world know about it online, it's easy to overlook a critical component: Your Privacy Policy.  It might seem like a legal formality, but it's far more than that - it's your sheild against potential legal troubles and a testament to your commitement to user privacy.</p>
@@ -115,15 +112,28 @@
       </div>
     </div>
 
-    <div class="container footer-bottom clearfix">
-      <div class="copyright">
-        &copy; Copyright <strong><span>GlitchWizard Solutions LLC</span></strong>. All Rights Reserved  <br>   
-        <a href="terms.html">Terms of Service</a> &nbsp; 
-        <a href="accessibility.html">Accessibility Policy</a>  &nbsp; 
-        <a href="privacy.html">Privacy Policy</a>  &nbsp; 
-        <a href="javascript:UC_UI.showSecondLayer();" id="usercentrics-psl">Privacy Settings</a>
+    <div class='container footer-bottom clearfix'>
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <div class='copyright' style='display:inline;'>
+            <a href='terms.php'>Terms</a> &nbsp; | &nbsp;
+            <a href='accessibility.php'>Accessibility</a> &nbsp; | &nbsp;
+            <a href='privacy.php'>Privacy</a> &nbsp; | &nbsp;
+            <a href="https://glitchwizarddigitalsolutions.com">Portal</a>
+          </div>
+        </div>
+        <div style='text-align:center; flex-shrink: 0;'>
+          <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
+            <img src='assets/img/badges/Light.png' style='width:90px; height:auto; margin-right:10px;' alt='Termageddon Privacy Policy Badge'>
+          </a>
+          <a target="_blank" href='https://certificates.usidhr.org/6f94c33d-896b-4fd4-a3ef-280193df6726#acc.bOLXBi2Q'>
+            <img style='width:90px; height:auto;' src='assets/img/badges/HumanRightsBadge2025.png' alt='Human Rights Certificate 2025'>
+          </a>
+        </div>
+        <div class='credits' style='font-size:16px;'>
+          &copy; 2022-<script type='text/JavaScript'>document.write(new Date().getFullYear());</script>&nbsp; GlitchWizard Solutions. All Rights Reserved.
+        </div>
       </div>
-      
     </div>
   </footer><!-- End Footer -->
 

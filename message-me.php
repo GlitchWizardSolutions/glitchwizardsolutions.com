@@ -19,33 +19,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Contact GlitchWizard Solutions | Affordable Website Development Services</title>
-  <meta content="Contact GlitchWizard Solutions for website development, custom web applications, and digital marketing services. Get started with affordable website packages from $1,500." name="description">
-  <meta content="contact glitchwizard, website design inquiry, web development contact, custom web applications, digital marketing services, affordable website design, small business websites, MVP website, website development packages, professional web design, responsive website, web application development, contact form, consultation request" name="keywords">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://glitchwizardsolutions.com/message-me.php">
-  <meta property="og:title" content="Contact GlitchWizard Solutions - Website Development Services">
-  <meta property="og:description" content="Get started with professional website development from $1,500. Contact us for MVP websites, custom applications, and digital marketing.">
-  <meta property="og:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
-  <meta property="og:image:secure_url" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="GlitchWizard Solutions">
-  
-  <!-- Canonical URL for SEO -->
-  <link rel="canonical" href="https://glitchwizardsolutions.com/message-me.php">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://glitchwizardsolutions.com/message-me.php">
-  <meta name="twitter:title" content="Contact GlitchWizard Solutions - Website Development Services">
-  <meta name="twitter:description" content="Get started with professional website development from $1,500. Contact us for MVP websites, custom applications, and digital marketing.">
-  <meta name="twitter:image" content="https://glitchwizardsolutions.com/assets/img/glitchwizardsolutions-social-share-image.jpg">
-  <meta name="twitter:image:alt" content="GlitchWizard Solutions - Digital Foundations to Build Your Small Business">
+  <meta content="Contact GlitchWizard Solutions for website development, custom web applications, and digital marketing services." name="description">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -65,40 +39,28 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Updated: October 30 2025 with Bootstrap v5.3.0
-  ======================================================== -->
   <!-- GlitchWizard Solutions Accessibility CSS -->
   <link href="universal/accessibility.css" rel="stylesheet">
   
-  <!-- Schema.org Structured Data for Contact Page -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact GlitchWizard Solutions",
-    "url": "https://glitchwizardsolutions.com/message-me.php",
-    "description": "Get in touch with GlitchWizard Solutions for professional website development and digital services.",
-    "organization": {
-      "@type": "Organization",
-      "name": "GlitchWizard Solutions",
-      "url": "https://glitchwizardsolutions.com",
-      "logo": "https://glitchwizardsolutions.com/assets/img/favicon.png",
-      "sameAs": [
-        "https://www.facebook.com/glitchwizardsolutions",
-        "https://www.linkedin.com/company/glitchwizard-solutions"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Sales",
-        "availableLanguage": ["en"]
-      }
-    }
-  }
-  </script>
-  
   <!-- Custom CSS for Services Pricing -->
   <style>
+  .mockup-banner {
+    background: #fff3cd;
+    border-bottom: 3px solid #ffc107;
+    padding: 15px;
+    text-align: center;
+    color: #856404;
+    font-weight: 600;
+    position: relative;
+    z-index: 100;
+  }
+  
+  .mockup-banner a {
+    color: #003366;
+    text-decoration: underline;
+    margin-left: 10px;
+  }
+
   .services-pricing {
     background: #f8f9fa;
     padding: 30px 25px;
@@ -132,108 +94,106 @@
     margin-bottom: 0 !important;
   }
 
-.webmaster-services h3 {
-          color: white !important;
-          border-bottom: 2px solid white !important;
+  .webmaster-services h3 {
+    color: white !important;
+    border-bottom: 2px solid white !important;
   }
 
   .service-card {
     background: white;
-    border-radius: 8px;
-    padding: 20px;
-    border: 1px solid #dee2e6;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    transition: 0.3s;
   }
 
   .service-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(103, 58, 183, 0.15);
   }
 
   .service-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 12px;
   }
 
   .service-name {
-    color: #333;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: #4a2c6b;
     margin: 0;
-    flex: 1;
-    min-width: 200px;
   }
 
   .service-price {
-    background: linear-gradient(135deg, #673AB7, #9C27B0);
-    color: white;
-    padding: 8px 15px;
+    background: #f0e6ff;
+    color: #4a2c6b;
+    padding: 5px 12px;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 1rem;
-    white-space: nowrap;
-    margin-left: 10px;
+    font-size: 0.85rem;
   }
 
-  .service-subtitle {
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
+  .service-description {
+    font-size: 0.85em;
+    color: #555;
   }
 
   .service-features {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 10px 0 0 0;
   }
 
   .service-features li {
     padding: 5px 0;
-    color: #555;
-    display: flex;
-    align-items: center;
+    color: #333;
+    font-size: 0.9em;
   }
 
-  .service-features .bi-check-circle {
+  .service-features .bi {
     color: #28a745;
     margin-right: 8px;
-    font-size: 1rem;
   }
 
   .webmaster-services {
-    background: linear-gradient(135deg, #673AB7, #9C27B0);
-    color: white;
-    padding: 20px;
+    background: linear-gradient(135deg, #4a2c6b 0%, #673AB7 100%);
+    padding: 25px;
     border-radius: 8px;
-    margin-top: 20px;
+    color: white;
+    margin-top: 30px;
   }
 
-  .webmaster-services h5 {
+  .webmaster-services h3 {
     color: white;
-    margin-bottom: 15px;
+    border-bottom: 2px solid white;
     font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .webmaster-services p {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 15px;
   }
 
   .webmaster-option {
-    margin-bottom: 12px;
+    background: rgba(255,255,255,0.1);
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
   }
 
   .webmaster-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255,255,255,0.1);
-    padding: 10px 15px;
-    border-radius: 5px;
-    backdrop-filter: blur(10px);
   }
 
   .webmaster-type {
-    font-weight: 500;
+    font-weight: 600;
+    color: white;
+    font-size: 0.95em;
   }
 
   .webmaster-price {
@@ -283,37 +243,97 @@
     box-shadow: 0 5px 15px rgba(103, 58, 183, 0.3);
   }
 
+  /* AI SEO Section */
+  .ai-seo-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 30px 25px;
+    border-radius: 10px;
+    color: white;
+    margin-top: 30px;
+    border: 2px solid #0f3460;
+  }
+
+  .ai-seo-section h3 {
+    color: #00d4ff;
+    font-weight: 700;
+    border-bottom: 2px solid #00d4ff;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+
+  .ai-seo-section .price-tag {
+    background: rgba(0, 212, 255, 0.2);
+    color: #00d4ff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  .ai-seo-section p {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 12px;
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+
+  .ai-seo-features {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+  }
+
+  .ai-seo-features li {
+    padding: 6px 0;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.85em;
+    margin-left: 0;
+  }
+
+  .ai-seo-features .bi {
+    color: #00d4ff;
+    margin-right: 8px;
+    font-size: 0.9em;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 991.98px) {
     .services-pricing {
-      margin-top: 40px;
+      margin-top: 30px;
       position: static;
     }
-    
-    .service-header {
-      flex-direction: column;
-      align-items: flex-start;
+
+    .service-card {
+      margin-bottom: 15px;
     }
-    
-    .service-price {
-      margin-left: 0;
-      margin-top: 10px;
-      align-self: flex-start;
+
+    .webmaster-services {
+      margin-top: 20px;
+    }
+
+    .ai-seo-section {
+      margin-top: 20px;
     }
   }
 
-  /* Accessibility improvements */
-  .service-card:focus-within {
-    outline: 3px solid #673AB7;
-    outline-offset: 2px;
+  /* PHP Email Form Styles */
+  .php-email-form {
+    width: 100%;
   }
 
-  .pricing-cta .btn-primary:focus {
-    outline: 3px solid #fff;
-    outline-offset: 2px;
+  .php-email-form .form-group {
+    margin-bottom: 20px;
   }
 
-  /* Enhanced Contact Form Styling */
+  .php-email-form label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+  }
+
   .php-email-form .form-control {
     border: 2px solid #e9ecef;
     border-radius: 8px;
@@ -368,86 +388,54 @@
     box-shadow: 0 5px 15px rgba(103, 58, 183, 0.3);
   }
 
-  /* Footer responsive layout */
-  .footer-bottom {
-    padding: 20px 0 !important;
+  .php-email-form .form-check {
+    margin-top: 15px;
+    margin-bottom: 20px;
   }
 
-  .footer-bottom > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
+  .php-email-form .form-check-input {
+    accent-color: #673AB7;
   }
 
-  .footer-bottom > div > div:nth-child(1) {
-    flex: 1;
-    min-width: 200px;
+  .php-email-form .form-check-label {
+    font-size: 0.9rem;
+    color: #333;
   }
 
-  .footer-bottom > div > div:nth-child(2) {
-    flex-shrink: 0;
+  .php-email-form .loading {
+    display: none;
     text-align: center;
+    color: #673AB7;
   }
 
-  .footer-bottom > div > div:nth-child(3) {
-    flex: 1;
-    text-align: right;
-    min-width: 200px;
+  .php-email-form .error-message {
+    display: none;
+    text-align: center;
+    color: #e74c3c;
+    margin-top: 10px;
   }
 
-  .footer-bottom img {
-    flex-shrink: 0;
-  }
-
-  .footer-bottom .copyright {
-    display: inline;
-    margin: 0;
-    padding: 0;
-  }
-
-  .footer-bottom .credits {
-    font-size: 16px;
-    display: inline;
-    margin: 0;
-    padding: 0;
-  }
-
-  @media (max-width: 768px) {
-    .footer-bottom > div {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .footer-bottom > div > div:nth-child(1),
-    .footer-bottom > div > div:nth-child(3) {
-      text-align: center;
-      width: 100%;
-    }
-
-    .footer-bottom > div > div:nth-child(3) {
-      margin-top: 10px;
-    }
+  .php-email-form .sent-message {
+    display: none;
+    text-align: center;
+    color: #28a745;
+    margin-top: 10px;
   }
   </style>
+
 </head>
 
 <body>
- <a id='skip-nav' class='screenreader-text' href='#primary-content'>Skip to Content</a>
 
   <!-- ======= Header ======= -->
   <header id='header' class='d-flex align-items-center '>
     <div class='container-fluid d-flex align-items-center justify-content-lg-between'>
 
       <h1 class='logo'>GlitchWizard Solutions</h1>
-       
 
       <nav id='navbar' class='navbar order-last order-lg-0' role="navigation" aria-label="Main navigation">
-         
-
         <ul role="menubar">
-          <li role="none"><a class='nav-link scrollto active' href='https://glitchwizardsolutions.com/#hero' role="menuitem">Home</a></li>
+          <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/#hero' role="menuitem">Home</a></li>
           <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/#services' role="menuitem">Services</a></li>
           <li role="none"><a class='nav-link scrollto' href='https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/' role="menuitem">Booking</a></li>
           <li role="none"><a class='nav-link scrollto' href='https://glitchwizardsolutions.com/message-me.php' role="menuitem">Contact</a></li>
@@ -467,8 +455,8 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="section-title">
-              <h2>Contact Me</h2>
-              <p>Ready to get started on your website project? Send me a message and I'll get back to you soon!</p>
+              <h2>Let's Get Started</h2>
+              <p>Tell us about your project and what you're looking to accomplish. We'll review your needs and get back to you with a timeline and next steps.</p>
             </div>
             
             <form action="forms/contact.php" method="post" role="form" class="php-email-form" novalidate>
@@ -484,32 +472,31 @@
                 <div class="col-md-6 form-group">
                   <label for="name">Your Name <span aria-label="required">*</span></label>
                   <input type="text" name="name" class="form-control" id="name" placeholder="John Smith" required aria-required="true">
-                 
-                  
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <label for="email">Your Email <span aria-label="required">*</span></label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="john@example.com" required aria-required="true">
-                 
-                  
                 </div>
               </div>
+              
               <div class="form-group mt-3">
-                <label for="subject">Service Interest <span aria-label="required">*</span></label>
+                <label for="subject">What Are You Looking To Build? <span aria-label="required">*</span></label>
                 <select name="subject" class="form-control" id="subject" required aria-required="true">
-                  <option value="">Select One</option>
-                  <option value="MVP Website">MVP Website ($1,500)</option>
-                  <option value="Foundational Website">Foundational Website ($3,500)</option>
-                  <option value="Expanded Website">Expanded Website ($5,500)</option>
-                  <option value="Consultation">Consultation</option>
-                  <option value="Custom Web Application">Custom Web Application</option>
-                  <option value="Other">Other</option>
+                  <option value="">-- Select One --</option>
+                  <option value="Personal or Brochure MVP Website">Personal or Brochure MVP Website ($1,500)</option>
+                  <option value="Portfolio MVP Website">Portfolio MVP Website ($2,500)</option>
+                  <option value="Small Business Essential">Small Business Website - Essential ($3,500)</option>
+                  <option value="Small Business Standard">Small Business Website - Standard ($4,500)</option>
+                  <option value="Small Business Advanced">Small Business Website - Advanced ($5,500)</option>
+                  <option value="ADHD Dashboard">ADHD-Friendly Custom Dashboard</option>
+                  <option value="Custom Web Application">Custom Web Application or Integration</option>
+                  <option value="Other">Something Else (Please Tell Us Below)</option>
                 </select>
               </div>
-              <div class="form-group mt-3">
-                <label for="message">Project Details <span aria-label="required">*</span></label>
-                <textarea class="form-control" name="message" id="message" rows="8" placeholder="Tell me about your project and goals..." required aria-required="true"></textarea>
               
+              <div class="form-group mt-3">
+                <label for="message">Tell Us About Your Project <span aria-label="required">*</span></label>
+                <textarea class="form-control" name="message" id="message" rows="8" placeholder="What's your vision? What do you want your website to accomplish? What's your budget range?" required aria-required="true"></textarea>
               </div>
               
               <!-- Security Acknowledgment Checkbox -->
@@ -518,7 +505,7 @@
                   <input type="checkbox" class="form-check-input" name="security_acknowledgment" id="security_acknowledgment" required style="width: 24px; height: 24px; margin-top: 2px; cursor: pointer; flex-shrink: 0; accent-color: #4a2c6b; border: 4px solid #4a2c6b;" aria-required="true">
                   <label class="form-check-label" for="security_acknowledgment" style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; margin-bottom: 0;">
                     <span style="color: #333333; font-size: 15px; line-height: 1.6; font-weight: 500;">
-                      I acknowledge that my submission will be screened for security purposes to protect against spam and automated bots. This helps us respond faster to genuine inquiries. <span aria-label="required" style="color: #e63946;">*</span>
+                      I acknowledge that my submission will be screened for security purposes to protect against spam and automated bots. <span aria-label="required" style="color: #e63946;">*</span>
                     </span>
                   </label>
                 </div>
@@ -527,110 +514,197 @@
               <div class="my-3">
                 <div class="loading" role="status" aria-live="polite" aria-hidden="true">Loading</div>
                 <div class="error-message" role="alert" aria-live="assertive" aria-hidden="true" tabindex="-1"></div>
-                <div class="sent-message" role="status" aria-live="polite" aria-hidden="true" tabindex="-1">Your message has been sent. Thank you!</div>
+                <div class="sent-message" role="status" aria-live="polite" aria-hidden="true" tabindex="-1">Your message has been sent. We'll be in touch within 24 hours!</div>
               </div>
-              <div class="text-center"><button type="submit" aria-label="Send contact form message">Send Message</button></div>
+              <div class="text-center"><button type="submit" aria-label="Send contact form message">Send My Project Details</button></div>
             </form>
+
+            <!-- ======= Dual-Engine SEO Service ======= -->
+            <div class="ai-seo-section mt-5">
+              <h3><i class="bi bi-search"></i> Dual-Engine SEO with LLM Optimization</h3>
+              <div class="price-tag">Starting at $2,500/year (Add-on to Webmaster Services)</div>
+              
+              <p><strong>Future-proof your online presence with comprehensive SEO strategy built for both traditional search engines and Large Language Models.</strong></p>
+              
+              <p style="color: rgba(255,255,255,0.95); margin: 15px 0; font-size: 0.95em; line-height: 1.6;">
+                As AI reshapes how people discover information, a smart SEO strategy must address both fronts. We combine professional search engine optimization for Google, Bing, and other traditional search engines with strategic content optimization for LLM discovery (ChatGPT, Claude, Gemini, and emerging AI systems). Our webmaster leverages advanced tools and analytical frameworks to structure, optimize, and position your content where modern audiences actually search.
+              </p>
+              
+              <p style="font-weight: 600; color: #00d4ff; margin-top: 15px; margin-bottom: 10px;">Strategic Advantages You Gain:</p>
+              <ul class="ai-seo-features">
+                <li><i class="bi bi-check-circle"></i> <strong>Traditional Search Optimization:</strong> Google Search, Bing, and DuckDuckGo ranking authority</li>
+                <li><i class="bi bi-check-circle"></i> <strong>LLM Query Optimization:</strong> Content structured for AI systems (ChatGPT, Claude, Gemini, Perplexity)</li>
+                <li><i class="bi bi-check-circle"></i> <strong>Competitive Analysis:</strong> Monitor both search engine and LLM visibility</li>
+                <li><i class="bi bi-check-circle"></i> <strong>Integrated Ecosystem Management:</strong> Google Business Profile, Google Analytics, Search Console optimization</li>
+                <li><i class="bi bi-check-circle"></i> <strong>Social & Platform Integration:</strong> Facebook, Instagram, Twitter/X strategy coordinated across channels</li>
+                <li><i class="bi bi-check-circle"></i> <strong>Performance Tracking:</strong> Detailed analytics across all visibility channels</li>
+                <li><i class="bi bi-check-circle"></i> <strong>Optional Paid Amplification:</strong> Google Ads and Facebook Ads management for immediate market presence</li>
+              </ul>
+              
+              <p style="font-size: 0.85em; color: rgba(255,255,255,0.8); margin-top: 18px; border-top: 1px solid rgba(0,212,255,0.3); padding-top: 15px;">
+                <strong>The ROI is clear:</strong> While competitors optimize only for yesterday's search engine algorithms, you'll be discoverable across traditional search, AI systems, and emerging discovery platforms. This forward-thinking approach saves you from costly strategy pivots while building sustainable organic growth.
+              </p>
+            </div>
 
           </div>
           
           <!-- ======= Services Pricing Column ======= -->
           <div class="col-lg-4">
             <div class="services-pricing">
-              <h3 class="mb-4">Website Development</h3>
+              <h3 class="mb-4">Service Options & Pricing</h3>
               
-              <!-- MVP Website -->
+              <!-- Personal or Brochure MVP Websites -->
               <div class="service-card mb-4">
                 <div class="service-header">
-                  <h4 class="service-name">MVP Branded Website</h4>
+                  <h4 class="service-name">Personal or Brochure MVP</h4>
                   <span class="service-price">$1,500</span>
                 </div>
                 <div class="service-description">
+                  <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;"><strong>Perfect for:</strong> Personal Resumes, Personal Blogs, Weddings or Events, Static Landing Pages, Announcements, Pet Pages, Creative Portfolios, and more</p>
                   <ul class="service-features">
-                    <li><i class="bi bi-check-circle"></i> Contact form-to-email</li>
-                    <li><i class="bi bi-check-circle"></i> Accessibility Guarantee</li>
-                    <li><i class="bi bi-check-circle"></i> Professional branding</li>
-                    <li><i class="bi bi-check-circle"></i> Mobile responsive design</li>
+                    <li><i class="bi bi-check-circle"></i> Contact form to email</li>
+                    <li><i class="bi bi-check-circle"></i> Fully accessible design</li>
+                    <li><i class="bi bi-check-circle"></i> Mobile responsive</li>
+                    <li><i class="bi bi-check-circle"></i> Standard SEO optimized</li>
                   </ul>
                 </div>
               </div>
 
-              <!-- Foundational Website -->
+              <!-- Portfolio or Family MVP Websites -->
               <div class="service-card mb-4">
                 <div class="service-header">
-                  <h4 class="service-name">Small Business Foundational</h4>
+                  <h4 class="service-name">Portfolio or Family MVP</h4>
+                  <span class="service-price">$2,500</span>
+                </div>
+                <div class="service-description">
+                  <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;"><strong>Perfect for:</strong> Creative portfolios, family sites, galleries</p>
+                  <ul class="service-features">
+                    <li><i class="bi bi-check-circle"></i> Admin dashboard</li>
+                    <li><i class="bi bi-check-circle"></i> Image/video gallery</li>
+                    <li><i class="bi bi-check-circle"></i> All Brochure MVP features</li>
+                    <li><i class="bi bi-check-circle"></i> Media management system</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Small Business Essential -->
+              <div class="service-card mb-4">
+                <div class="service-header">
+                  <h4 class="service-name">Small Business Essential</h4>
                   <span class="service-price">$3,500</span>
                 </div>
                 <div class="service-description">
-                  <p class="service-subtitle">Includes web applications:</p>
+                  <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;"><strong>Perfect for:</strong> Lead capture, small shops, content sites, consultants</p>
                   <ul class="service-features">
-                    <li><i class="bi bi-check-circle"></i> Admin Center</li>
-                    <li><i class="bi bi-check-circle"></i> Lead Capture form</li>
-                    <li><i class="bi bi-check-circle"></i> Blog & Blog Newsletter</li>
-                    <li><i class="bi bi-check-circle"></i> All MVP features included</li>
+                    <li><i class="bi bi-check-circle"></i> Professional branding</li>
+                    <li><i class="bi bi-check-circle"></i> Admin dashboard</li>
+                    <li><i class="bi bi-check-circle"></i> Lead capture forms</li>
+                    <li><i class="bi bi-check-circle"></i> Blog system</li>
                   </ul>
                 </div>
               </div>
 
-              <!-- Expanded Website -->
+              <!-- Small Business Standard -->
               <div class="service-card mb-4">
                 <div class="service-header">
-                  <h4 class="service-name">Small Business Expanded</h4>
+                  <h4 class="service-name">Small Business Standard</h4>
+                  <span class="service-price">$4,500</span>
+                </div>
+                <div class="service-description">
+                  <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;"><strong>Adds:</strong> E-commerce, integrations, advanced features</p>
+                  <ul class="service-features">
+                    <li><i class="bi bi-check-circle"></i> E-commerce shop</li>
+                    <li><i class="bi bi-check-circle"></i> Automations & integrations</li>
+                    <li><i class="bi bi-check-circle"></i> Advanced analytics</li>
+                    <li><i class="bi bi-check-circle"></i> All Essential features</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Small Business Advanced -->
+              <div class="service-card mb-4">
+                <div class="service-header">
+                  <h4 class="service-name">Small Business Advanced</h4>
                   <span class="service-price">$5,500</span>
                 </div>
                 <div class="service-description">
-                  <p class="service-subtitle">Additional web applications:</p>
+                  <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;"><strong>Adds:</strong> E-commerce, automations, advanced features</p>
                   <ul class="service-features">
-                    <li><i class="bi bi-check-circle"></i> Client Portal</li>
-                    <li><i class="bi bi-check-circle"></i> E-commerce Shop</li>
-                    <li><i class="bi bi-check-circle"></i> Invoice System</li>
-                    <li><i class="bi bi-check-circle"></i> Contract System</li>
-                    <li><i class="bi bi-check-circle"></i> All previous features included</li>
+                    <li><i class="bi bi-check-circle"></i> E-commerce shop</li>
+                    <li><i class="bi bi-check-circle"></i> Automations & integrations</li>
+                    <li><i class="bi bi-check-circle"></i> Advanced analytics</li>
+                    <li><i class="bi bi-check-circle"></i> All Standard features</li>
                   </ul>
+                </div>
+              </div>
+
+              <!-- Helpful Link -->
+              <div style="text-align: center; margin: 20px 0;">
+                <a href="#contact" onclick="document.getElementById('message').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; font-size: 0.85em; color: #673AB7; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.3s;">
+                  → Tell us what you need in the form  
+                </a>
+              </div>
+
+              <!-- Custom Solutions -->
+              <div class="service-card" style="background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%); border: 2px solid #673AB7;">
+                <div class="service-header">
+                  <h4 class="service-name">Custom Solutions</h4>
+                  <span class="service-price">Quote</span>
+                </div>
+                <div class="service-description">
+                  <p style="font-size: 0.9em; color: #333; margin-bottom: 10px;"><strong>For:</strong> ADHD dashboards, integrations, unique needs</p>
+                  <p style="font-size: 0.85em; color: #666; font-style: italic;">
+                    Got a specific idea? We'll work with you to build exactly what you need and provide a custom quote.
+                  </p>
                 </div>
               </div>
 
               <!-- Webmaster Services -->
               <div class="webmaster-services">
                 <h3 class="mb-3">Webmaster Services</h3>
+                <p style="font-size: 0.9em; margin-bottom: 20px;">Keep your website growing—hosting, security, updates, Standard SEO, and ongoing support.</p>
                 
                 <div class="webmaster-option">
                   <div class="webmaster-header">
-                    <span class="webmaster-type">MVP Websites</span>
-                    <span class="webmaster-price">$600/year</span>
+                    <span class="webmaster-type">MVP Sites</span>
+                    <span class="webmaster-price">$1,000/year</span>
                   </div>
                 </div>
                 
                 <div class="webmaster-option">
                   <div class="webmaster-header">
-                    <span class="webmaster-type">Foundational Websites</span>
-                    <span class="webmaster-price">$1,200/year</span>
+                    <span class="webmaster-type">Small Business Essential</span>
+                    <span class="webmaster-price">$1,500/year</span>
                   </div>
                 </div>
                 
                 <div class="webmaster-option">
                   <div class="webmaster-header">
-                    <span class="webmaster-type">Expanded Websites</span>
-                    <span class="webmaster-price">$1,800/year</span>
+                    <span class="webmaster-type">Small Business Standard</span>
+                    <span class="webmaster-price">$2,000/year</span>
+                  </div>
+                </div>
+
+                <div class="webmaster-option">
+                  <div class="webmaster-header">
+                    <span class="webmaster-type">Small Business Advanced</span>
+                    <span class="webmaster-price">$2,500/year</span>
                   </div>
                 </div>
                 
                 <div class="webmaster-benefits mt-3">
-                  <small class="text-muted">
-                    <i class="bi bi-shield-check"></i> Includes Hosting, Maintenance, Backups, Security Monitoring & Repair, 
-                                                       Standard SEO, Accessibility Policy & Guarantee, Privacy Policy & TOS Options, 
-                                                       Domain Registration Renewals (up to $25/year) and Webmaster Services Support. 
-                            
+                  <small>
+                    <i class="bi bi-shield-check"></i> <strong>Includes:</strong> Hosting, backups, security monitoring, Standard SEO, compliance updates, performance optimization, Accessibility Policy & Guarantee, Privacy Policy & TOS options, Domain Registration Renewals (up to $25/year), and priority support.
                   </small>
                 </div>
               </div>
 
               <!-- Call to Action -->
               <div class="pricing-cta mt-4 text-center">
-                <p class="mb-3"><strong>Ready to get started?</strong></p>
+                <p class="mb-3"><strong>Questions? Let's Talk.</strong></p>
                 <a href="https://outlook.office365.com/owa/calendar/GlitchWizardSolutionsLLC1@GlitchWizardSolutions.com/bookings/" 
                    class="btn btn-primary" target="_blank">
-                  <i class="bi bi-calendar-check"></i> Book Consultation
+                  Book Free Consultation
                 </a>
               </div>
             </div>
@@ -651,55 +725,15 @@
 
         <div class='row  justify-content-center'>
           <div class='col-lg-6'>
-            <h4>We're looking forward to introducing your business to the people who are actively looking for your services!</h4>
- </div>
-</div>
-
-<!-- Certifications & Badges Section - TEMPORARILY COMMENTED OUT -->
-<!--
-<div class='row justify-content-center'>
-  <div class='col-lg-12' style='margin:20px 20px 5px 20px'>
-    <h5 style='text-align:center; margin-bottom:15px; color:#4a2c6b;'>Professional Certifications & Achievements</h5>
-    <div style='display:flex; flex-wrap:wrap; justify-content:center; gap:15px; align-items:center;'>
-     
-      <div style='text-align:center;'>
-        <a target="_blank" href='https://courses.edx.org/certificates/9802695869264fc0b953ade347415557' title='edX Verified Certificate - March 5, 2023'>
-          <div style='background:#f0f0f0; padding:10px; border-radius:8px; width:120px;'>
-            <div style='font-size:12px; font-weight:bold; color:#4a2c6b;'>edX</div>
-            <div style='font-size:10px; color:#666; margin-top:5px;'>Verified Certificate</div>
-            <div style='font-size:9px; color:#999; margin-top:3px;'>Mar 5, 2023</div>
+            <h4>We're looking forward to building something great with you.</h4>
           </div>
-        </a>
-      </div>
+        </div>
 
-     
-      <div style='text-align:center;'>
-        <a target="_blank" href='https://courses.edx.org/certificates/ee11b61782ea445b8b95e2b87c425900' title='edX Verified Certificate - March 3, 2023'>
-          <div style='background:#f0f0f0; padding:10px; border-radius:8px; width:120px;'>
-            <div style='font-size:12px; font-weight:bold; color:#4a2c6b;'>edX</div>
-            <div style='font-size:10px; color:#666; margin-top:5px;'>Verified Certificate</div>
-            <div style='font-size:9px; color:#999; margin-top:3px;'>Mar 3, 2023</div>
-          </div>
-        </a>
-      </div>
-
-   
-      <div style='text-align:center;'>
-        <a target="_blank" href='https://certificates.usidhr.org/6f94c33d-896b-4fd4-a3ef-280193df6726#acc.bOLXBi2Q'>
-          <img style='width:100px; height:auto;' src='assets/img/badges/HumanRightsBadge2025.png' alt='Human Rights Certificate 2025'>
-        </a>
       </div>
     </div>
-  </div>
-</div>
--->
-
-</div>
-</div>
-</div>
     <div class='container footer-bottom clearfix'>
-      <div>
-        <div style='float:left;'>
+      <div style='display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;'>
+        <div style='flex: 0 1 auto;'>
           <div class='copyright' style='display:inline;'>
             <a href='terms.php'>Terms</a> &nbsp; | &nbsp;
             <a href='accessibility.php'>Accessibility</a> &nbsp; | &nbsp;
@@ -708,7 +742,7 @@
             <a href="https://glitchwizarddigitalsolutions.com">Portal</a>
           </div>
         </div>
-        <div style='text-align:center; margin:0 auto;'>
+        <div style='flex: 1 0 auto; text-align:center;'>
           <a target="_blank" href='https://glitchwizardsolutions.com/termageddon.php' title='Privacy Policy Protection by Termageddon'>
             <img src='assets/img/badges/Light.png' style='width:90px; height:auto; margin-right:10px;' alt='Termageddon Privacy Policy Badge'>
           </a>
@@ -716,15 +750,12 @@
             <img style='width:90px; height:auto;' src='assets/img/badges/HumanRightsBadge2025.png' alt='Human Rights Certificate 2025'>
           </a>
         </div>
-        <div class='credits' style='float:right; font-size:16px;'>
+        <div class='credits' style='flex: 0 1 auto; font-size:16px; text-align: right;'>
           &copy; 2022-<script type='text/JavaScript'>document.write(new Date().getFullYear());</script>&nbsp; GlitchWizard Solutions. All Rights Reserved.
         </div>
       </div>
     </div>
   </footer><!-- End Footer -->
-
-
-
 
   <div id='preloader'></div>
   <a href='#' aria-label='Back to Top Link' class='back-to-top d-flex align-items-center justify-content-center'><i class='bi bi-arrow-up-short'></i></a>
@@ -746,7 +777,6 @@
       document.getElementById('form_timestamp').value = Date.now();
     });
   </script>
-   
 </body>
 
 </html>
