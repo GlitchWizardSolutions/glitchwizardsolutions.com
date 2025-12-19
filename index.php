@@ -730,7 +730,7 @@
             </div>
 
             <!-- Dual-Engine SEO Section -->
-            <div class='ai-seo-section'>
+            <div class='ai-seo-section' id='dual-engine-seo'>
               <h3><i class='bi bi-search'></i> Dual-Engine SEO with LLM Optimization</h3>
               <div class='price-tag'>Starting at $2,500/year (Add-on to Webmaster Services)</div>
               
